@@ -4,14 +4,14 @@ import redis from '../../lib/redis';
 export async function POST(request: Request) {
   try {
     const { location, dates } = await request.json() as { location: string; dates: string[] };
-    
+
     if (!location || !dates || !Array.isArray(dates)) {
       return NextResponse.json({ error: 'Lokalizacja i lista dat są wymagane' }, { status: 400 });
     }
 
     const normalizedLocation = location.normalize('NFC');
     const scheduleKey = `schedule:${normalizedLocation}`;
-    
+
     // Spłaszcz i oczyść daty
     const cleanDates = dates.flat().map(d => String(d).trim());
     console.log('cleanDates przed zapisem:', cleanDates);
@@ -19,7 +19,9 @@ export async function POST(request: Request) {
     // Wyczyść stare dane
     await redis.del(scheduleKey);
     // Zapisz jako zbiór
-    await redis.sadd(scheduleKey, ...cleanDates); // Rozproszenie
+    //await redis.sadd(scheduleKey, ...cleanDates); // Rozproszenie
+    await redis.sadd(scheduleKey, ...cleanDates as [string, ...string[]]);
+
     const savedDates = await redis.smembers(scheduleKey);
     console.log(`Zapisano harmonogram dla ${normalizedLocation}:`, savedDates);
 
