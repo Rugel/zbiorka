@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+/*import { NextResponse } from 'next/server';
 import redis from '../../lib/redis';
 
 export async function POST(request: Request) {
@@ -55,4 +55,78 @@ export async function GET(request: Request) {
 
   console.log('Odczytane daty z GET:', dates);
   return NextResponse.json({ location: normalizedLocation, category, dates });
+}*/
+
+
+
+import { NextResponse } from 'next/server';
+import redis from '../../lib/redis';
+
+export async function POST(request: Request) {
+  try {
+    const { location, postalCode, dates, category } = await request.json() as {
+      location: string;
+      postalCode: string;
+      dates: string[];
+      category: string;
+    };
+
+    if (!location || !postalCode || !dates || !Array.isArray(dates) || !category) {
+      return NextResponse.json(
+        { error: 'Lokalizacja, kod pocztowy, lista dat i kategoria są wymagane' },
+        { status: 400 }
+      );
+    }
+
+    const postalCodeRegex = /^\d{2}-\d{3}$/;
+    if (!postalCodeRegex.test(postalCode)) {
+      return NextResponse.json(
+        { error: 'Kod pocztowy musi być w formacie XX-XXX (np. 26-025)' },
+        { status: 400 }
+      );
+    }
+
+    const normalizedLocation = location.normalize('NFC');
+    const scheduleKey = `schedule:${normalizedLocation}:${postalCode}:${category}`;
+
+    const cleanDates: string[] = dates.flat().map(d => String(d).trim());
+    console.log('cleanDates przed zapisem:', cleanDates);
+
+    await redis.del(scheduleKey); // Wyczyść stare dane dla testów
+    //await redis.sadd(scheduleKey, cleanDates); // Zapisz jako zbiór
+    await redis.sadd(scheduleKey, ...cleanDates as [string, ...string[]]);
+    const savedDates = await redis.smembers(scheduleKey);
+    console.log(`Zapisano harmonogram dla ${normalizedLocation} (${postalCode}, ${category}):`, savedDates);
+
+    return NextResponse.json({ message: 'Harmonogram zapisany pomyślnie' });
+  } catch (error) {
+    console.error('Błąd w /api/schedule:', error);
+    return NextResponse.json(
+      { error: 'Wystąpił błąd serwera', details: error instanceof Error ? error.message : 'Nieznany błąd' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const location = searchParams.get('location');
+  const postalCode = searchParams.get('postalCode');
+  const category = searchParams.get('category');
+
+  if (!location || !postalCode) {
+    return NextResponse.json(
+      { error: 'Lokalizacja i kod pocztowy są wymagane' },
+      { status: 400 }
+    );
+  }
+
+  const normalizedLocation = location.normalize('NFC');
+  const scheduleKey = category
+    ? `schedule:${normalizedLocation}:${postalCode}:${category}`
+    : `schedule:${normalizedLocation}:${postalCode}`;
+  const dates = await redis.smembers(scheduleKey);
+
+  console.log('Odczytane daty z GET:', dates);
+  return NextResponse.json({ location: normalizedLocation, postalCode, category, dates });
 }
