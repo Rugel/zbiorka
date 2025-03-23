@@ -4,19 +4,22 @@ import { sendEmail } from '../../lib/email';
 
 export async function POST(request: Request) {
   try {
-    const { location, date } = await request.json();
+    const { location, date, category } = await request.json();
     const today = new Date().toISOString().split('T')[0];
     const checkDate = (date || today).trim();
 
-    console.log('Odebrano dane:', { location, date });
+    console.log('Odebrano dane:', { location, date, category });
     console.log('CheckDate:', checkDate);
 
-    if (!location) {
-      return NextResponse.json({ error: 'Lokalizacja jest wymagana' }, { status: 400 });
+    if (!location || !category) {
+      return NextResponse.json(
+        { error: 'Lokalizacja i kategoria są wymagane' },
+        { status: 400 }
+      );
     }
 
     const normalizedLocation = location.normalize('NFC');
-    const scheduleKey = `schedule:${normalizedLocation}`;
+    const scheduleKey = `schedule:${normalizedLocation}:${category}`;
     const subscriptionKey = `subscriptions:${normalizedLocation}`;
 
     const dates = await redis.smembers(scheduleKey);
@@ -27,17 +30,29 @@ export async function POST(request: Request) {
     console.log('Czy checkDate w dates?', dates.includes(checkDate));
 
     if (dates.length === 0) {
-      return NextResponse.json({ message: 'Brak harmonogramu dla tej lokalizacji' });
+      return NextResponse.json({ message: 'Brak harmonogramu dla tej lokalizacji i kategorii' });
     }
     if (subscribers.length === 0) {
       return NextResponse.json({ message: 'Brak subskrybentów dla tej lokalizacji' });
     }
     if (!dates.includes(checkDate)) {
-      return NextResponse.json({ message: `Brak zbiórki w ${normalizedLocation} na dzień ${checkDate}` });
+      return NextResponse.json({
+        message: `Brak zbiórki ${category} w ${normalizedLocation} na dzień ${checkDate}`,
+      });
     }
 
-    const subject = `Przypomnienie: Zbiórka odpadów w ${normalizedLocation}`;
-    const text = `Dzisiaj (${checkDate}) odbywa się zbiórka odpadów w ${normalizedLocation}.`;
+    const categoryLabels: { [key: string]: string } = {
+      mixed: 'Zmieszane odpady komunalne',
+      plastics: 'Tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)',
+      glass: 'Szkło białe i kolorowe (worek zielony)',
+      paper: 'Papier, tektura (worek niebieski)',
+      bio: 'Odpady biodegradowalne (worek brązowy)',
+      bulky: 'Odpady wielkogabarytowe',
+      electronics: 'Zużyty sprzęt elektryczny i elektroniczny',
+    };
+
+    const subject = `Zbiórka odpadów w ${normalizedLocation}`;
+    const text = `Dzisiaj (${checkDate}) odbywa się zbiórka ${categoryLabels[category]} w ${normalizedLocation}.`;
 
     await Promise.all(
       subscribers.map(async (email) => {

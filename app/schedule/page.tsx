@@ -5,8 +5,19 @@ import { useState } from 'react';
 export default function Schedule() {
   const [location, setLocation] = useState('');
   const [dates, setDates] = useState('');
+  const [category, setCategory] = useState('');
   const [message, setMessage] = useState('');
   const [isError, setIsError] = useState(false);
+
+  const wasteCategories = [
+    { value: 'mixed', label: 'Zmieszane odpady komunalne' },
+    { value: 'plastics', label: 'Tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)' },
+    { value: 'glass', label: 'Szkło białe i kolorowe (worek zielony)' },
+    { value: 'paper', label: 'Papier, tektura (worek niebieski)' },
+    { value: 'bio', label: 'Odpady biodegradowalne (worek brązowy)' },
+    { value: 'bulky', label: 'Odpady wielkogabarytowe' },
+    { value: 'electronics', label: 'Zużyty sprzęt elektryczny i elektroniczny' },
+  ];
 
   const handleSchedule = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,7 +27,7 @@ export default function Schedule() {
       const res = await fetch('/api/schedule', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ location, dates: dateArray }),
+        body: JSON.stringify({ location, dates: dateArray, category }),
       });
       if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
@@ -46,6 +57,20 @@ export default function Schedule() {
           onChange={(e) => setDates(e.target.value)}
           required
         />
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          required
+        >
+          <option value="" disabled>
+            Wybierz kategorię odpadów
+          </option>
+          {wasteCategories.map((cat) => (
+            <option key={cat.value} value={cat.value}>
+              {cat.label}
+            </option>
+          ))}
+        </select>
         <button type="submit">Zapisz harmonogram</button>
       </form>
       {message && (
