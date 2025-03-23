@@ -17,15 +17,14 @@ export async function sendEmail(to: string, subject: string, text: string) {
   const normalizedText = text.normalize('NFC');
 
   const mailOptions = {
-    from: `"Waste Notifier" <${process.env.EMAIL_USER}>`,
+    from: `"Zbiórka Odpadów" <${process.env.EMAIL_USER}>`,
     to,
     subject: normalizedSubject,
     text: normalizedText,
-    html: `
-      <h1>${normalizedSubject}</h1>
+    html:
+     `<h4>Przypomnienie!<h4/>
       <p>${normalizedText}</p>
-      <p>Ten e-mail został wysłany przez Waste Collection Notifier.</p>
-      <p>Jeśli nie subskrybowałeś powiadomień, zignoruj tę wiadomość.</p>
+      <small>Ten e-mail został wysłany przez Waste Collection Notifier.<br/>Jeśli nie subskrybowałeś powiadomień, zignoruj tę wiadomość.</small>
       <footer>
         <small>Waste Collection Notifier © 2025</small>
       </footer>

@@ -1,8 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 50px auto;
-  text-align: left;
+  font-size: 1.1rem;
+  margin: 0 auto;
+  line-height: 28px;
 }
 
 input {
@@ -22,4 +27,62 @@ button {
 
 button:hover {
   background-color: #005bb5;
+}
+
+.header {
+  padding: 1rem;
+  padding-left: 2rem;
+  color: white;
+  background-color: #208484;
+  text-align: left;
+  min-height: 150px;
+  width: 100%;
+}
+
+.logo {
+  float: left;
+  padding-right: 3vw;
+}
+
+.main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.subsField {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 0;
+}
+
+.link {
+  border: solid 1px blue;
+  margin: 1rem;
+  width: fit-content;
+  padding: .3rem;
+  margin-bottom: 3rem;
+}
+
+input {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+a {
+  color: blue;
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+select {
+  max-width: 80vw;
 }
