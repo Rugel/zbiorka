@@ -89,7 +89,7 @@ import { NextResponse } from 'next/server';
 import redis from '../../lib/redis';
 import { sendEmail } from '../../lib/email';
 
-export async function POST(request: Request) {
+export async function POST() {
   try {
     const today = new Date().toISOString().split('T')[0];
     console.log('Cron: Sprawdzanie harmonogramu na dzień:', today);
