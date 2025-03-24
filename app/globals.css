@@ -34,7 +34,6 @@ button:hover {
 
 .header {
   padding: 1rem;
-  padding-left: 2rem;
   color: white;
   background-color: #208484;
   text-align: left;
@@ -79,11 +78,11 @@ a {
 }
 
 h1 {
-  font-size: 26px;
+  font-size: 1.6rem;
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 1.1rem;
 }
 
 select {

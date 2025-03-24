@@ -17,8 +17,8 @@ const Main = () =>
         <h3>Jak to działa?</h3>
         <ol>
             <li><strong>Subskrybuj swoją lokalizację</strong><br />Wpisz swój adres e-mail, miejscowość (lub ulicę) oraz kod pocztowy.</li>
-            <li><strong>Dodaj harmonogram</strong><br />Jeśli podczas subskrypcji dostanies informację o braku harmonogramu dla danej lokalizacji, skorzystaj z zakładki <b><Link href='./schedule'>dodaj harmonogram</Link></b>. Wprowadź daty odbioru dla każdej kategorii odpadów – od zmieszanych po elektronikę. Z utworzonego przez Ciebie harmonogramu będą mogli skorzystać mieszkańcy tej miejscowości lub ulicy.</li>
-            <li><strong>Otrzymuj przypomnienia</strong><br />W dniu zbiórki dostaniesz e-mail z informacją, np.: „Dzisiaj (2025-03-18) odbywa się zbiórka tworzyw sztucznych, metalu i opakowań wielomateriałowych (worek żółty) w Pacanowie”</li>
+            <li><strong>Dodaj harmonogram</strong><br />Jeśli podczas subskrypcji dostaniesz informację o braku harmonogramu dla danej lokalizacji, skorzystaj z zakładki <b><Link href='./schedule'>dodaj harmonogram</Link></b>. Wprowadź daty odbioru dla każdej kategorii odpadów – od zmieszanych po elektronikę. Z utworzonego przez Ciebie harmonogramu będą mogli skorzystać mieszkańcy tej miejscowości lub ulicy.</li>
+            <li><strong>Otrzymuj przypomnienia</strong><br />W dniu zbiórki dostaniesz e-mail z informacją, np.: „Dzisiaj 2025-03-18 odbywa się zbiórka tworzyw sztucznych, metalu i opakowań wielomateriałowych (worek żółty) w Pacanowie”</li>
             <li><strong>Testuj i dostosuj</strong><br />Nie jesteś pewien, czy e-maile dotrą? Skorzystaj z opcji testowej, aby sprawdzić działanie powiadomień. Jeśli wiadomość wpadnie do spamu, oznacz ją jako „nie spam”.</li>
         </ol>
 <br/>
