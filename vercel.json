@@ -1,0 +1,9 @@
+{
+    "crons": [
+      {
+        "name": "daily-waste-notification",
+        "schedule": "0 8 * * *",
+        "path": "/api/notify"
+      }
+    ]
+  }
