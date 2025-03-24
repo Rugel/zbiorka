@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Main from './modules/Main';
 import Header from './modules/Heder';
+import Footer from './modules/Footer';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -109,19 +110,19 @@ export default function Home() {
     <>
       <Head>
         <meta property="og:url" content="https://sondaz.vercel.app/" />
-        <meta property="og:title" content="Sondaż prezydencki 2025 - tworzony przez użytkowników - oddaj głos!" />
-        <meta property="og:description" content="Odwiedź sondaż wyborczy tworzony przez i dla użytkowników, zobacz wyniki i oddaj głos na swojego kandydata prosto i anonimowo - wybory prezydenckie 2025" />
+        <meta property="og:title" content="Zbiórka odpadów - ustawienie powiadomień e-mail - harmonogram" />
+        <meta property="og:description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy. Dodaj harmonogram zbiórki odpadów komunalnych." />
         <meta property="og:image" content="https://sondaz.vercel.app/web-app-manifest-512x512.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sondaż prezydencki 2025 - tworzony przez użytkowników - oddaj głos!" />
-        <meta name="twitter:description" content="Odwiedź sondaż wyborczy tworzony przez i dla użytkowników, zobacz wyniki i oddaj głos na swojego kandydata prosto i anonimowo - wybory prezydenckie 2025" />
+        <meta name="twitter:title" content="Zbiórka odpadów - ustawienie powiadomień e-mail - harmonogram" />
+        <meta name="twitter:description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy. Dodaj harmonogram zbiórki odpadów komunalnych." />
         <meta name="twitter:image" content="https://sondaz.vercel.app/web-app-manifest-512x512.png" />
       </Head>
       <div className="container">
         <Header />
         <Main />
         <div className='subsField'>
-        <div className='link'><a href="/schedule">Dodaj harmonogram</a></div>
+          <div className='link'><a href="/schedule">Dodaj harmonogram</a></div>
           <form onSubmit={handleSubscribe}>
             <input
               type="email"
@@ -148,7 +149,7 @@ export default function Home() {
           </form>
           <br />
           <label>
-            Przetestuj powiadomienie e-mail. Po skorzystaniu z tej opcji powinieneś dostać natychmiast e-mail z informacją.
+            Wpisz swój adres e-mail w odpowiednie pole i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją.
             <br />
             <button onClick={testEmail}>Test</button>
             <br />
@@ -184,6 +185,7 @@ export default function Home() {
             </p>
           )}
         </div>
+        <Footer />
       </div>
     </>
   );

@@ -99,6 +99,7 @@ export default function Schedule() {
 
 import { useState } from 'react';
 import Header from '../modules/Heder';
+import Footer from '../modules/Footer';
 
 export default function Schedule() {
   const [location, setLocation] = useState('');
@@ -149,8 +150,8 @@ export default function Schedule() {
   };
 
   return (
-    <div className="container"> 
-    <Header /><br/><br/>
+    <div className="container">
+      <Header /><br /><br />
       <div className='subsField'>
         <h3>Dodaj harmonogram zbiórek</h3>
         <div className='link'><a href="/" >Powrót do strony głównej</a></div>
@@ -207,6 +208,7 @@ export default function Schedule() {
           </p>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Zbiórka odpadów",
+  "name": "Zbiórka Odpadów",
   "short_name": "Zbiórka",
   "icons": [
     {
@@ -16,6 +16,6 @@
     }
   ],
   "theme_color": "#ffffff",
-  "background_color": "#33b914",
+  "background_color": "#8af482",
   "display": "standalone"
 }
