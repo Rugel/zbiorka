@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Main from './modules/Main';
 import Header from './modules/Heder';
 import Footer from './modules/Footer';
+import Link from 'next/link';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -122,7 +123,7 @@ export default function Home() {
         <Header />
         <Main />
         <div className='subsField'>
-          <div className='link'><a href="/schedule">Dodaj harmonogram</a></div>
+          <div className='link'><Link href="/schedule">Dodaj harmonogram</Link></div>
           <form onSubmit={handleSubscribe}>
             <input
               type="email"
@@ -153,7 +154,7 @@ export default function Home() {
             <br />
             <button onClick={testEmail}>Test</button>
             <br />
-            Jeśli e-mail nie dotarł, należy sprawdzić folder SPAM i oznaczyć wiadomość jako "nie spam".
+            Jeśli e-mail nie dotarł, należy sprawdzić folder SPAM i oznaczyć wiadomość jako &quot;nie spam&quot;.
           </label>
           <br />
           {/*<select
