@@ -14,8 +14,8 @@ export async function checkSchedules() {
     const subscribers = await redis.smembers(`subscriptions:${location}`);
 
     if (dates.includes(today) && subscribers.length > 0) {
-      const subject = `Przypomnienie: Zbiórka odpadów w ${location}`;
-      const text = `Dzisiaj (${today}) odbywa się zbiórka odpadów w ${location}.`;
+      const subject = `Zbiórka odpadów w ${location}`;
+      const text = `Dzisiaj ${today} odbywa się zbiórka odpadów w ${location}. Pamiętaj o wystawieniu pojemników!`;
 
       await Promise.all(
         subscribers.map(async (email) => {
