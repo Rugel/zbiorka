@@ -110,8 +110,8 @@ async function handleNotify(request: Request | null) {
         const dates = await redis.smembers(scheduleKey);
 
         if (dates.includes(checkDate)) {
-          const subject = `Przypomnienie: Zbiórka ${categoryLabels[cat]} w ${loc} (${pCode})`;
-          const text = `Dzisiaj (${checkDate}) odbywa się zbiórka ${categoryLabels[cat]} w ${loc} (${pCode}).`;
+          const subject = `${categoryLabels[cat]} w ${pCode} ${loc} `;
+          const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci z kategorii ${categoryLabels[cat]} w ${pCode} ${loc}. Pamiętaj o wystawieniu pojemników!`;
 
           await Promise.all(
             subscribers.map(async (email) => {
