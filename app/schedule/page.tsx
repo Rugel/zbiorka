@@ -6,7 +6,7 @@ import Footer from '../modules/Footer';
 import Link from 'next/link';
 
 export default function Schedule() {
-  const [location, setLocation] = useState('');
+  const [locations, setLocations] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [dates, setDates] = useState('');
   const [category, setCategory] = useState('');
@@ -30,22 +30,42 @@ export default function Schedule() {
 
   const handleSchedule = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Walidacja kodu pocztowego
     if (!validatePostalCode(postalCode)) {
       setMessage('Kod pocztowy musi być w formacie XX-XXX (np. 26-025)');
       setIsError(true);
       return;
     }
+
     try {
-      const dateArray = dates.replace(/\s/g, '').split(',').flat().map(d => d.trim());
-      console.log('dateArray przed zapisem:', dateArray);
+      // Przetwarzanie listy miejscowości
+      const locationList = locations.split(',').map(loc => loc.trim()).filter(loc => loc);
+      if (locationList.length === 0) {
+        setMessage('Proszę podać co najmniej jedną miejscowość');
+        setIsError(true);
+        return;
+      }
+
+      // Przetwarzanie dat
+      const dateArray = dates.replace(/\s/g, '').split(',').map(d => d.trim());
+
+      // Wysłanie żądania
       const res = await fetch('/api/schedule', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ location, postalCode, dates: dateArray, category }),
+        body: JSON.stringify({ locations: locationList, postalCode, dates: dateArray, category }),
       });
+
       if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
-      setMessage(data.message || data.error);
+
+      // Komunikat zwrotny
+      setMessage(
+        data.error 
+          ? data.error 
+          : `Harmonogram zapisany dla miejscowości: ${locationList.join(', ')}`
+      );
       setIsError(!!data.error);
     } catch (error) {
       setMessage(error instanceof Error ? error.message : 'Błąd harmonogramu');
@@ -58,18 +78,18 @@ export default function Schedule() {
       <Header /><br /><br />
       <div className='subsField'>
         <h3>Dodaj harmonogram zbiórek</h3>
-        <div className='link'><Link href="/" >Powrót do strony głównej</Link></div>
+        <div className='link'><Link href="/">Powrót do strony głównej</Link></div>
         <form onSubmit={handleSchedule}>
           <input
             type="text"
-            placeholder="Miejscowość lub ulica"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Miejscowości lub ulice (oddzielone przecinkami, np. Długa, Krótka)"
+            value={locations}
+            onChange={(e) => setLocations(e.target.value)}
             required
           />
           <input
             type="text"
-            placeholder="Kod pocztowy (np. 26-025)"
+            placeholder="Kod pocztowy (np. 26-038)"
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
             required
@@ -90,7 +110,7 @@ export default function Schedule() {
           </select>
           <input
             type="text"
-            placeholder="Daty zbiórek (np. 2025-03-18,2025-04-15)"
+            placeholder="Daty zbiórek (np. 2025-03-18, 2025-04-15)"
             value={dates}
             onChange={(e) => setDates(e.target.value)}
             required

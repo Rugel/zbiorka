@@ -3,16 +3,17 @@ import redis from '../../lib/redis';
 
 export async function POST(request: Request) {
   try {
-    const { location, postalCode, dates, category } = await request.json() as {
-      location: string;
+    const { locations, postalCode, dates, category } = await request.json() as {
+      locations: string[];
       postalCode: string;
       dates: string[];
       category: string;
     };
 
-    if (!location || !postalCode || !dates || !Array.isArray(dates) || !category) {
+    // Walidacja danych wejściowych
+    if (!locations || !Array.isArray(locations) || locations.length === 0 || !postalCode || !dates || !Array.isArray(dates) || !category) {
       return NextResponse.json(
-        { error: 'Lokalizacja, kod pocztowy, lista dat i kategoria są wymagane' },
+        { error: 'Lista miejscowości, kod pocztowy, lista dat i kategoria są wymagane' },
         { status: 400 }
       );
     }
@@ -25,19 +26,21 @@ export async function POST(request: Request) {
       );
     }
 
-    const normalizedLocation = location.normalize('NFC');
-    const scheduleKey = `schedule:${normalizedLocation}:${postalCode}:${category}`;
-
-    const cleanDates: string[] = dates.flat().map(d => String(d).trim());
+    const cleanDates: string[] = dates.map(d => String(d).trim());
     console.log('cleanDates przed zapisem:', cleanDates);
 
-    await redis.del(scheduleKey); // Wyczyść stare dane dla testów
-    //await redis.sadd(scheduleKey, cleanDates); // Zapisz jako zbiór
-    await redis.sadd(scheduleKey, ...cleanDates as [string, ...string[]]);
-    const savedDates = await redis.smembers(scheduleKey);
-    console.log(`Zapisano harmonogram dla ${normalizedLocation} (${postalCode}, ${category}):`, savedDates);
+    // Zapis harmonogramu dla każdej miejscowości
+    for (const location of locations) {
+      const normalizedLocation = location.normalize('NFC');
+      const scheduleKey = `schedule:${normalizedLocation}:${postalCode}:${category}`;
 
-    return NextResponse.json({ message: 'Harmonogram zapisany pomyślnie' });
+      await redis.del(scheduleKey); // Wyczyść stare dane (opcjonalne)
+      await redis.sadd(scheduleKey, ...cleanDates as [string, ...string[]]);
+      const savedDates = await redis.smembers(scheduleKey);
+      console.log(`Zapisano harmonogram dla ${normalizedLocation} (${postalCode}, ${category}):`, savedDates);
+    }
+
+    return NextResponse.json({ message: 'Harmonogram zapisany pomyślnie dla wszystkich miejscowości' });
   } catch (error) {
     console.error('Błąd w /api/schedule:', error);
     return NextResponse.json(
@@ -55,7 +58,7 @@ export async function GET(request: Request) {
 
   if (!location || !postalCode) {
     return NextResponse.json(
-      { error: 'Lokalizacja i kod pocztowy są wymagane' },
+      { error: 'Miejscowość i kod pocztowy są wymagane' },
       { status: 400 }
     );
   }

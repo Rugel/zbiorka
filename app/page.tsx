@@ -110,14 +110,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta property="og:url" content="https://sondaz.vercel.app/" />
-        <meta property="og:title" content="Zbiórka odpadów - ustawienie powiadomień e-mail - harmonogram" />
+        <meta property="og:url" content="https://zbiorka.vercel.app/" />
+        <meta property="og:title" content="Zbiórka odpadów komunalnych - ustawienie powiadomień e-mail - harmonogram" />
         <meta property="og:description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy. Dodaj harmonogram zbiórki odpadów komunalnych." />
-        <meta property="og:image" content="https://sondaz.vercel.app/web-app-manifest-512x512.png" />
+        <meta property="og:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Zbiórka odpadów - ustawienie powiadomień e-mail - harmonogram" />
         <meta name="twitter:description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy. Dodaj harmonogram zbiórki odpadów komunalnych." />
-        <meta name="twitter:image" content="https://sondaz.vercel.app/web-app-manifest-512x512.png" />
+        <meta name="twitter:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
       </Head>
       <div className="container">
         <Header />
@@ -127,7 +127,7 @@ export default function Home() {
           <form onSubmit={handleSubscribe}>
             <input
               type="email"
-              placeholder="Twój email"
+              placeholder="Twój e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

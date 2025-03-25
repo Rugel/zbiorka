@@ -1,6 +1,6 @@
 const Footer = ()=> {return(
     <footer className="footer">
-       Waste Collection Notifier &copy; 2025 <a href="mailto:zbiorkasmieci@gmail.com">zbiorkasmieci@gmail.com</a> 
+       <b>Waste Collection Notifier</b> &copy; 2025 kont.: <em><a href="mailto:zbiorkasmieci@gmail.com">zbiorkasmieci@gmail.com</a></em>
     </footer>
 )}
 
