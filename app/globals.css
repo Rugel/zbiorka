@@ -35,7 +35,7 @@ button:hover {
 .header {
   padding: 1rem;
   color: white;
-  background-color: #208484;
+  background-color: #3C8500;
   text-align: left;
   min-height: 160px;
   width: 100%;
@@ -93,7 +93,7 @@ select {
 .footer {
   font-size: 1.2rem;
   color: white;
-  background-color: #208484;
+  background-color: #3C8500;
   bottom: 0;
   padding: .5rem;
   margin-bottom: 0;
