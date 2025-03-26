@@ -26,13 +26,13 @@ async function handleNotify(request: Request | null) {
     ];
 
     const categoryLabels: { [key: string]: string } = {
-      mixed: '🗑️zmieszane odpady komunalne',
-      plastics: '🟡tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)',
-      glass: '🟢szkło białe i kolorowe (worek zielony)',
-      paper: '🔵papier, tektura (worek niebieski)',
-      bio: '🟤odpady biodegradowalne (worek brązowy)',
-      bulky: '🪑odpady wielkogabarytowe',
-      electronics: '📻zużyty sprzęt elektryczny i elektroniczny',
+      mixed: '🗑️ zmieszane odpady komunalne',
+      plastics: '🟡 tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)',
+      glass: '🟢 szkło białe i kolorowe (worek zielony)',
+      paper: '🔵 papier, tektura (worek niebieski)',
+      bio: '🟤 odpady biodegradowalne (worek brązowy)',
+      bulky: '🪑 odpady wielkogabarytowe',
+      electronics: '📻 zużyty sprzęt elektryczny i elektroniczny',
     };
 
     let location: string | undefined, postalCode: string | undefined, category: string | undefined, date: string | undefined;
@@ -110,7 +110,7 @@ async function handleNotify(request: Request | null) {
         const dates = await redis.smembers(scheduleKey);
 
         if (dates.includes(checkDate)) {
-          const subject = `Śmieci!${categoryLabels[cat]} w ${loc} `;
+          const subject = `Śmieci! ${categoryLabels[cat]} w ${loc} `;
           const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci z kategorii ${categoryLabels[cat]} w ${pCode} ${loc}. Pamiętaj o wystawieniu pojemników!`;
 
           await Promise.all(
