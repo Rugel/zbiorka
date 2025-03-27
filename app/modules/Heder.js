@@ -3,7 +3,7 @@ import Image from "next/image";
 const Header = () => {
     return (
         <header className='header'>
-            <div className='logo'><Image src={'/logo.png'} alt='Logo' width={130} height={130} /></div>
+            <div className='logo'><a href="/" title="Przejdź na stronę główną"><Image src={'/logo.png'} alt='Logo' width={130} height={130} /></a></div>
             <h1>
                 Zbiórka odpadów komunalnych – ustaw powiadomienia e-mail
             </h1>

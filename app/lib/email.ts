@@ -23,10 +23,10 @@ export async function sendEmail(to: string, subject: string, text: string) {
     text: normalizedText,
     html:
      `<h4>Przypomnienie!<h4/>
-      <p>${normalizedText}</p>
-      <small>Ten e-mail został wysłany przez Waste Collection Notifier.<br/>Jeśli nie subskrybowałeś powiadomień, zignoruj tę wiadomość.</small>
+      <p style="color:green">${normalizedText}</p>
+      <small>Jeśli nie subskrybowałeś powiadomień, zignoruj tę wiadomość.</small>
       <footer>
-        <small>Waste Collection Notifier © 2025</small>
+        <small>Waste Collection Notifier © 2025 <a href='https://zbiorka.vercel.app'>zbiorka.vercel.app</a></small>
       </footer>
     `,
     encoding: 'utf8', // Jawne ustawienie kodowania

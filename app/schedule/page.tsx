@@ -75,10 +75,10 @@ export default function Schedule() {
 
   return (
     <div className="container">
-      <Header /><br /><br />
+      <Header />
+      <div className='link'><Link href="/">Powrót do strony głównej</Link></div>
       <div className='subsField'>
         <h3>Dodaj harmonogram zbiórek</h3>
-        <div className='link'><Link href="/">Powrót do strony głównej</Link></div>
         <form onSubmit={handleSchedule}>
           <input
             type="text"
@@ -120,12 +120,13 @@ export default function Schedule() {
         {message && (
           <p
             style={{
-              padding: '10px',
+              fontSize: '.8rem',
+              padding: '3px',
               marginTop: '15px',
               backgroundColor: isError ? '#ffe6e6' : '#e6ffe6',
               color: isError ? '#cc0000' : '#006600',
               border: isError ? '1px solid #ff3333' : '1px solid #00cc00',
-              borderRadius: '5px',
+              borderRadius: '2px',
             }}
           >
             {message}

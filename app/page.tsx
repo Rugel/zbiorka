@@ -123,7 +123,6 @@ export default function Home() {
         <Header />
         <Main />
         <div className='subsField'>
-          <div className='link'><Link href="/schedule">Dodaj harmonogram</Link></div>
           <form onSubmit={handleSubscribe}>
             <input
               type="email"
@@ -147,16 +146,18 @@ export default function Home() {
               required
             />
             <button type="submit">Subskrybuj</button>
-          </form>
-          <br />
+          </form><br/>
           <label>
             Wpisz swój adres e-mail w odpowiednie pole i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją.
             <br />
-            <button onClick={testEmail}>Test</button>
-            <br />
             Jeśli e-mail nie dotarł, należy sprawdzić folder SPAM i oznaczyć wiadomość jako &quot;nie spam&quot;.
+            <br />
+            <button onClick={testEmail}>Test</button>
           </label>
-          <br />
+          <div className='links'>
+          <div className='link'><Link href="/schedule">Dodaj harmonogram</Link></div>
+          <div className='link'><Link href="/unsubscribe">Anuluj subskrypcję</Link></div>
+          </div>
           {/*<select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
@@ -174,12 +175,13 @@ export default function Home() {
           {message && (
             <p
               style={{
-                padding: '10px',
+                fontSize: '.8rem',
+                padding: '3px',
                 marginTop: '15px',
                 backgroundColor: isError ? '#ffe6e6' : '#e6ffe6',
                 color: isError ? '#cc0000' : '#006600',
                 border: isError ? '1px solid #ff3333' : '1px solid #00cc00',
-                borderRadius: '5px',
+                borderRadius: '2px',
               }}
             >
               {message}
