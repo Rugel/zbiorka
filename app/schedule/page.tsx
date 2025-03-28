@@ -30,7 +30,7 @@ export default function Schedule() {
 
   const handleSchedule = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Walidacja kodu pocztowego
     if (!validatePostalCode(postalCode)) {
       setMessage('Kod pocztowy musi być w formacie XX-XXX (np. 26-025)');
@@ -62,8 +62,8 @@ export default function Schedule() {
 
       // Komunikat zwrotny
       setMessage(
-        data.error 
-          ? data.error 
+        data.error
+          ? data.error
           : `Harmonogram zapisany dla miejscowości: ${locationList.join(', ')}`
       );
       setIsError(!!data.error);
@@ -76,7 +76,10 @@ export default function Schedule() {
   return (
     <div className="container">
       <Header />
-      <div className='link'><Link href="/">Powrót do strony głównej</Link></div>
+      <div className='links'>
+        <div className='link'><Link href="/">HOME</Link></div>
+        <div className='link'><Link href="/unsubscribe">Anuluj subskrypcję</Link></div>
+      </div>
       <div className='subsField'>
         <h3>Dodaj harmonogram zbiórek</h3>
         <form onSubmit={handleSchedule}>

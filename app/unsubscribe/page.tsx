@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { useState } from 'react';
 import Header from '../modules/Heder';
@@ -37,7 +38,11 @@ export default function Home() {
 
   return (
     <div className="container">
-      <Header /><br /><br />
+      <Header />
+      <div className='links'>
+        <div className='link'><Link href="/">HOME</Link></div>
+        <div className='link'><Link href="/schedule">Dodaj harmonogram</Link></div>
+      </div>
       <div className='subsField'>
         <h3>Anuluj subskrypcję</h3>
         <input

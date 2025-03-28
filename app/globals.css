@@ -61,10 +61,11 @@ button:hover {
 
 .link {
   border: solid 2px blue;
-  width: fit-content;
+  width: 10rem;
   height: fit-content;
   padding: .5rem;
   margin-top: 2rem;
+  text-align: center;
 }
 
 input {

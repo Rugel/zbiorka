@@ -122,6 +122,10 @@ export default function Home() {
       <div className="container">
         <Header />
         <Main />
+        <div className='links'>
+          <div className='link'><Link href="/schedule">Dodaj harmonogram</Link></div>
+          <div className='link'><Link href="/unsubscribe">Anuluj subskrypcję</Link></div>
+        </div>
         <div className='subsField'>
           <form onSubmit={handleSubscribe}>
             <input
@@ -146,7 +150,7 @@ export default function Home() {
               required
             />
             <button type="submit">Subskrybuj</button>
-          </form><br/>
+          </form><br />
           <label>
             Wpisz swój adres e-mail w odpowiednie pole i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją.
             <br />
@@ -154,10 +158,6 @@ export default function Home() {
             <br />
             <button onClick={testEmail}>Test</button>
           </label>
-          <div className='links'>
-          <div className='link'><Link href="/schedule">Dodaj harmonogram</Link></div>
-          <div className='link'><Link href="/unsubscribe">Anuluj subskrypcję</Link></div>
-          </div>
           {/*<select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
