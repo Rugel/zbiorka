@@ -156,7 +156,7 @@ export default function Home() {
           <label>
             Wpisz swój adres e-mail w odpowiednie pole i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją.
             <br />
-            Jeśli e-mail nie dotarł, należy sprawdzić folder SPAM i oznaczyć wiadomość jako "nie spam".
+            Jeśli e-mail nie dotarł, należy sprawdzić folder SPAM i oznaczyć wiadomość jako &quot;nie spam&quot;.
             <br />
             <button onClick={testEmail}>Test</button>
           </label>
