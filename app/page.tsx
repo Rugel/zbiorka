@@ -122,10 +122,10 @@ export default function Home() {
       <div className="container">
         <Header />
         <Main />
-        <div className='links'>
-          <div className='link'><Link href="/schedule">Dodaj harmonogram</Link></div>
-          <div className='link'><Link href="/unsubscribe">Anuluj subskrypcję</Link></div>
-        </div>
+        <ul className='links'>
+          <li><Link className='link' href="/schedule">Dodaj harmonogram</Link></li>
+          <li><Link className='link' href="/unsubscribe">Anuluj subskrypcję</Link></li>
+        </ul>
         <div className='subsField'>
           <form onSubmit={handleSubscribe}>
             <input

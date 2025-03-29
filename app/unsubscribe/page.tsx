@@ -39,10 +39,10 @@ export default function Home() {
   return (
     <div className="container">
       <Header />
-      <div className='links'>
-        <div className='link'><Link href="/">HOME</Link></div>
-        <div className='link'><Link href="/schedule">Dodaj harmonogram</Link></div>
-      </div>
+      <ul className='links'>
+        <li><Link className='link' href="/">HOME</Link></li>
+        <li><Link className='link' href="/schedule">Dodaj harmonogram</Link></li>
+      </ul>
       <div className='subsField'>
         <h3>Anuluj subskrypcję</h3>
         <input

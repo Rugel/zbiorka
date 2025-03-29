@@ -60,12 +60,16 @@ button:hover {
 }
 
 .link {
-  border: solid 2px blue;
-  width: 10rem;
-  height: fit-content;
-  padding: .5rem;
+  text-decoration: none;
+}
+
+.links li {
   margin-top: 2rem;
-  text-align: center;
+  width: 10rem;
+  border: solid 2px blue;
+  display: grid;
+  place-items: center;
+  height: 50px;
 }
 
 input {
@@ -101,14 +105,15 @@ select {
   margin-bottom: 0;
 }
 
-footer a{
-  color:white;
+footer a {
+  color: white;
 }
 
-.links{
-  display:flex;
+.links {
+  display: flex;
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   gap: 10%;
+  list-style-type: none;
 }
