@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Header from '../modules/Heder';
 import Footer from '../modules/Footer';
 import Link from 'next/link';
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2';
+import { wasteCategoryOptions } from '../../utils/wasteCategories';
 
 export default function Schedule() {
   const [locations, setLocations] = useState('');
@@ -12,7 +13,8 @@ export default function Schedule() {
   const [dates, setDates] = useState('');
   const [category, setCategory] = useState('');
 
-  const wasteCategories = [
+  const wasteCategories = wasteCategoryOptions;
+  /*const wasteCategories = [
     { value: 'mixed', label: '🗑️zmieszane odpady komunalne' },
     { value: 'plastics', label: '🟡tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)' },
     { value: 'glass', label: '🟢szkło białe i kolorowe (worek zielony)' },
@@ -20,7 +22,8 @@ export default function Schedule() {
     { value: 'bio', label: '🟤odpady biodegradowalne (worek brązowy)' },
     { value: 'bulky', label: '🪑odpady wielkogabarytowe' },
     { value: 'electronics', label: '📻zużyty sprzęt elektryczny i elektroniczny' },
-  ];
+    { value: 'ash', label: '🚬popiół' },
+  ];*/
 
   const validatePostalCode = (code: string) => {
     const postalCodeRegex = /^\d{2}-\d{3}$/;
