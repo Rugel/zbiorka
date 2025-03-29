@@ -16,7 +16,8 @@
     "node-cron": "^3.0.3",
     "nodemailer": "^6.9.9",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sweetalert2": "^11.17.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

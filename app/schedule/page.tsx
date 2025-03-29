@@ -4,14 +4,13 @@ import { useState } from 'react';
 import Header from '../modules/Heder';
 import Footer from '../modules/Footer';
 import Link from 'next/link';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default function Schedule() {
   const [locations, setLocations] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [dates, setDates] = useState('');
   const [category, setCategory] = useState('');
-  const [message, setMessage] = useState('');
-  const [isError, setIsError] = useState(false);
 
   const wasteCategories = [
     { value: 'mixed', label: '🗑️zmieszane odpady komunalne' },
@@ -33,8 +32,12 @@ export default function Schedule() {
 
     // Walidacja kodu pocztowego
     if (!validatePostalCode(postalCode)) {
-      setMessage('Kod pocztowy musi być w formacie XX-XXX (np. 26-025)');
-      setIsError(true);
+      Swal.fire({
+        icon: 'error',
+        title: 'Błąd!',
+        text: 'Kod pocztowy musi być w formacie XX-XXX (np. 26-025)',
+        confirmButtonText: 'OK',
+      });
       return;
     }
 
@@ -42,8 +45,12 @@ export default function Schedule() {
       // Przetwarzanie listy miejscowości
       const locationList = locations.split(',').map(loc => loc.trim()).filter(loc => loc);
       if (locationList.length === 0) {
-        setMessage('Proszę podać co najmniej jedną miejscowość');
-        setIsError(true);
+        Swal.fire({
+          icon: 'error',
+          title: 'Błąd!',
+          text: 'Proszę podać co najmniej jedną miejscowość.',
+          confirmButtonText: 'OK',
+        });
         return;
       }
 
@@ -57,19 +64,34 @@ export default function Schedule() {
         body: JSON.stringify({ locations: locationList, postalCode, dates: dateArray, category }),
       });
 
-      if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
 
-      // Komunikat zwrotny
-      setMessage(
-        data.error
-          ? data.error
-          : `Harmonogram zapisany dla miejscowości: ${locationList.join(', ')}`
-      );
-      setIsError(!!data.error);
+      if (!res.ok) {
+        // Wyświetl błąd za pomocą SweetAlert2
+        Swal.fire({
+          icon: 'error',
+          title: 'Błąd!',
+          text: data.error || 'Wystąpił błąd podczas zapisywania harmonogramu.',
+          confirmButtonText: 'OK',
+        });
+        return;
+      }
+
+      // Wyświetl sukces za pomocą SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Sukces!',
+        text: `Harmonogram zapisany dla miejscowości: ${locationList.join(', ')}`,
+        confirmButtonText: 'OK',
+      });
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Błąd harmonogramu');
-      setIsError(true);
+      // Wyświetl błąd sieciowy za pomocą SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Błąd!',
+        text: error instanceof Error ? error.message : 'Wystąpił błąd sieciowy.',
+        confirmButtonText: 'OK',
+      });
     }
   };
 
@@ -77,8 +99,8 @@ export default function Schedule() {
     <div className="container">
       <Header />
       <ul className='links'>
-        <li ><Link className='link' href="/">HOME</Link></li>
-        <li ><Link className='link' href="/unsubscribe">Anuluj subskrypcję</Link></li>
+        <li><Link className='link' href="/">HOME</Link></li>
+        <li><Link className='link' href="/unsubscribe">Anuluj subskrypcję</Link></li>
       </ul>
       <div className='subsField'>
         <h3>Dodaj harmonogram zbiórek</h3>
@@ -120,21 +142,6 @@ export default function Schedule() {
           />
           <button type="submit">Zapisz harmonogram</button>
         </form>
-        {message && (
-          <p
-            style={{
-              fontSize: '.8rem',
-              padding: '3px',
-              marginTop: '15px',
-              backgroundColor: isError ? '#ffe6e6' : '#e6ffe6',
-              color: isError ? '#cc0000' : '#006600',
-              border: isError ? '1px solid #ff3333' : '1px solid #00cc00',
-              borderRadius: '2px',
-            }}
-          >
-            {message}
-          </p>
-        )}
       </div>
       <Footer />
     </div>

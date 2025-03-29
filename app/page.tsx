@@ -6,24 +6,12 @@ import Main from './modules/Main';
 import Header from './modules/Heder';
 import Footer from './modules/Footer';
 import Link from 'next/link';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default function Home() {
   const [email, setEmail] = useState('');
   const [location, setLocation] = useState('');
   const [postalCode, setPostalCode] = useState('');
-  //const [category, setCategory] = useState('');
-  const [message, setMessage] = useState('');
-  const [isError, setIsError] = useState(false);
-
-  /*const wasteCategories = [
-    { value: 'mixed', label: '🗑️zmieszane odpady komunalne' },
-    { value: 'plastics', label: '🟡tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)' },
-    { value: 'glass', label: '🟢szkło białe i kolorowe (worek zielony)' },
-    { value: 'paper', label: '🔵papier, tektura (worek niebieski)' },
-    { value: 'bio', label: '🟤odpady biodegradowalne (worek brązowy)' },
-    { value: 'bulky', label: '🪑odpady wielkogabarytowe' },
-    { value: 'electronics', label: '📻zużyty sprzęt elektryczny i elektroniczny' },
-  ];*/
 
   const validatePostalCode = (code: string) => {
     const postalCodeRegex = /^\d{2}-\d{3}$/;
@@ -32,24 +20,53 @@ export default function Home() {
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Walidacja kodu pocztowego
     if (!validatePostalCode(postalCode)) {
-      setMessage('Kod pocztowy musi być w formacie XX-XXX (np. 26-025)');
-      setIsError(true);
+      Swal.fire({
+        icon: 'error',
+        title: 'Błąd!',
+        text: 'Kod pocztowy musi być w formacie XX-XXX (np. 26-025)',
+        confirmButtonText: 'OK',
+      });
       return;
     }
+
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, location, postalCode }),
       });
-      if (!res.ok) throw new Error(await res.text());
+
       const data = await res.json();
-      setMessage(data.message || data.error); // Wyświetlamy pełny komunikat
-      setIsError(!!data.error);
+
+      if (!res.ok) {
+        // Wyświetl błąd za pomocą SweetAlert2
+        Swal.fire({
+          icon: 'error',
+          title: 'Błąd!',
+          text: data.error || 'Wystąpił błąd podczas dodawania subskrypcji.',
+          confirmButtonText: 'OK',
+        });
+        return;
+      }
+
+      // Wyświetl sukces za pomocą SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Sukces!',
+        text: data.message || 'Subskrypcja dodana pomyślnie.',
+        confirmButtonText: 'OK',
+      });
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Wystąpił błąd');
-      setIsError(true);
+      // Wyświetl błąd sieciowy za pomocą SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Błąd!',
+        text: error instanceof Error ? error.message : 'Wystąpił błąd sieciowy.',
+        confirmButtonText: 'OK',
+      });
     }
   };
 
@@ -60,52 +77,37 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ to: email }),
       });
-      if (!res.ok) throw new Error(await res.text());
+
       const data = await res.json();
-      setMessage(data.message || data.error);
-      setIsError(!!data.error);
-    } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Błąd wysyłania e-maila');
-      setIsError(true);
-    }
-  };
 
-  /*const handleNotify = async () => {
-    try {
-      const notifyLocation = location || 'Duraczów';
-      const notifyPostalCode = postalCode || '26-025'; // Domyślny kod dla testów
-      const notifyDate = new Date().toISOString().split('T')[0];
-
-      if (!validatePostalCode(notifyPostalCode)) {
-        setMessage('Kod pocztowy musi być w formacie XX-XXX (np. 26-025)');
-        setIsError(true);
+      if (!res.ok) {
+        // Wyświetl błąd za pomocą SweetAlert2
+        Swal.fire({
+          icon: 'error',
+          title: 'Błąd!',
+          text: data.error || 'Wystąpił błąd podczas wysyłania e-maila.',
+          confirmButtonText: 'OK',
+        });
         return;
       }
 
-      const res = await fetch('/api/notify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          location: notifyLocation,
-          postalCode: notifyPostalCode,
-          date: notifyDate,
-          category,
-        }),
+      // Wyświetl sukces za pomocą SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Sukces!',
+        text: data.message || 'E-mail testowy został wysłany.',
+        confirmButtonText: 'OK',
       });
-
-      if (!res.ok) {
-        const errorText = await res.text();
-        throw new Error(errorText);
-      }
-
-      const data = await res.json();
-      setMessage(data.message || data.error || 'Nieznany wynik');
-      setIsError(!!data.error);
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Błąd podczas wysyłania powiadomienia');
-      setIsError(true);
+      // Wyświetl błąd sieciowy za pomocą SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Błąd!',
+        text: error instanceof Error ? error.message : 'Wystąpił błąd sieciowy.',
+        confirmButtonText: 'OK',
+      });
     }
-  };*/
+  };
 
   return (
     <>
@@ -154,39 +156,10 @@ export default function Home() {
           <label>
             Wpisz swój adres e-mail w odpowiednie pole i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją.
             <br />
-            Jeśli e-mail nie dotarł, należy sprawdzić folder SPAM i oznaczyć wiadomość jako &quot;nie spam&quot;.
+            Jeśli e-mail nie dotarł, należy sprawdzić folder SPAM i oznaczyć wiadomość jako "nie spam".
             <br />
             <button onClick={testEmail}>Test</button>
           </label>
-          {/*<select
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      >
-        <option value="" disabled>
-          Wybierz kategorię odpadów
-        </option>
-        {wasteCategories.map((cat) => (
-          <option key={cat.value} value={cat.value}>
-            {cat.label}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleNotify}>Wyślij powiadomienie</button>*/}
-          {message && (
-            <p
-              style={{
-                fontSize: '.8rem',
-                padding: '3px',
-                marginTop: '15px',
-                backgroundColor: isError ? '#ffe6e6' : '#e6ffe6',
-                color: isError ? '#cc0000' : '#006600',
-                border: isError ? '1px solid #ff3333' : '1px solid #00cc00',
-                borderRadius: '2px',
-              }}
-            >
-              {message}
-            </p>
-          )}
         </div>
         <Footer />
       </div>

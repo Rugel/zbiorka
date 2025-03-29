@@ -1,21 +1,25 @@
 'use client';
-import Link from 'next/link';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import Header from '../modules/Heder';
 import Footer from '../modules/Footer';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default function Home() {
   const [email, setEmail] = useState('');
   const [location, setLocation] = useState('');
   const [postalCode, setPostalCode] = useState('');
-  const [message, setMessage] = useState('');
-  const [isError, setIsError] = useState(false);
 
   const handleUnsubscribe = async () => {
+    // Walidacja pól
     if (!email || !location || !postalCode) {
-      setMessage('Proszę podać email, miejscowość i kod pocztowy');
-      setIsError(true);
+      Swal.fire({
+        icon: 'error',
+        title: 'Błąd!',
+        text: 'Proszę podać email, miejscowość i kod pocztowy.',
+        confirmButtonText: 'OK',
+      });
       return;
     }
 
@@ -26,13 +30,34 @@ export default function Home() {
         body: JSON.stringify({ email, location, postalCode }),
       });
 
-      if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
-      setMessage(data.message || data.error);
-      setIsError(!!data.error);
+
+      if (!res.ok) {
+        // Wyświetl błąd za pomocą SweetAlert2
+        Swal.fire({
+          icon: 'error',
+          title: 'Błąd!',
+          text: data.error || 'Wystąpił błąd podczas anulowania subskrypcji.',
+          confirmButtonText: 'OK',
+        });
+        return;
+      }
+
+      // Wyświetl sukces za pomocą SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Sukces!',
+        text: data.message || 'Subskrypcja została pomyślnie anulowana.',
+        confirmButtonText: 'OK',
+      });
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Błąd anulowania subskrypcji');
-      setIsError(true);
+      // Wyświetl błąd sieciowy za pomocą SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Błąd!',
+        text: error instanceof Error ? error.message : 'Wystąpił błąd sieciowy.',
+        confirmButtonText: 'OK',
+      });
     }
   };
 
@@ -64,21 +89,6 @@ export default function Home() {
           onChange={(e) => setPostalCode(e.target.value)}
         />
         <button onClick={handleUnsubscribe}>Anuluj subskrypcję</button>
-        {message && (
-          <p
-            style={{
-              fontSize: '.8rem',
-              padding: '3px',
-              marginTop: '15px',
-              backgroundColor: isError ? '#ffe6e6' : '#e6ffe6',
-              color: isError ? '#cc0000' : '#006600',
-              border: isError ? '1px solid #ff3333' : '1px solid #00cc00',
-              borderRadius: '2px',
-            }}
-          >
-            {message}
-          </p>
-        )}
       </div>
       <Footer />
     </div>
