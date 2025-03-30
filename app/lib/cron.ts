@@ -15,12 +15,13 @@ export async function checkSchedules() {
 
     if (dates.includes(today) && subscribers.length > 0) {
       const subject = `Zbiórka odpadów w ${location}`;
-      const text = `Dzisiaj ${today} odbywa się zbiórka odpadów w ${location}. Pamiętaj o wystawieniu pojemników!`;
+      const text = `Dzisiaj ${today} odbywa się zbiórka odpadów w ${location}.`;
+      const info = 'Pamiętaj o wystawieniu pojemników!'
 
       await Promise.all(
         subscribers.map(async (email) => {
           try {
-            await sendEmail(email, subject, text, text);
+            await sendEmail(email, subject, text, info);
             console.log(`Wysłano e-mail do ${email}`);
           } catch (error) {
             console.error(`Błąd wysyłania do ${email}:`, error);
