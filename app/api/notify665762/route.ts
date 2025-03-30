@@ -575,15 +575,15 @@ async function handleNotify(request: Request | null) {
         // Jeśli są jakieś kategorie do wysłania, utwórz jedną wiadomość
         if (categoriesForToday.length > 0) {
           const subject = `Śmieci! Zbiórka w ${loc} (${checkDate})`;
-          const text = `Jeśli nie subskrybowałeś powiadomień, zignoruj tę wiadomość.`;
+          const text = ``;
           const html = `
             <h3>Zbiórka śmieci w ${pCode} ${loc}</h3>
             <p>Dzisiaj ${checkDate} odbywa się zbiórka śmieci:</p>
             <ul>
               ${categoriesForToday.map(cat => `<li>${cat}</li><br/>`).join('')}
-            </ul>
+            </ul><br/>
             <p>Pamiętaj o wystawieniu pojemników!</p><br/>
-            <small>${text}</small>
+            <small>Jeśli nie subskrybowałeś powiadomień, zignoruj tę wiadomość.</small>
           `;
   
           console.log('Treść emaila (text):\n', text);
