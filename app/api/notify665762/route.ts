@@ -243,7 +243,7 @@ async function handleNotify(request: Request | null) {
         const categoriesText = categoriesWithPickup
           .map(cat => `- ${categoryLabels[cat]}`)
           .join('\n');
-        const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci w ${pCode} ${loc}. Kategorie:\n${categoriesText}\n\nPamiętaj o wystawieniu pojemników!`;
+        const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci w ${pCode} ${loc}. Kategorie:/n${categoriesText}/n/n. Pamiętaj o wystawieniu pojemników!`;
 
         await Promise.all(
           subscribers.map(async (email) => {
