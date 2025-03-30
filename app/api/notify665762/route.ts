@@ -575,7 +575,7 @@ async function handleNotify(request: Request | null) {
         // Jeśli są jakieś kategorie do wysłania, utwórz jedną wiadomość
         if (categoriesForToday.length > 0) {
           const subject = `Śmieci! Zbiórka w ${loc} (${checkDate})`;
-          const categoriesText = categoriesForToday.map(cat => `- ${cat}`).join('\r\n'); // Każda kategoria w nowej linii
+          //const categoriesText = categoriesForToday.map(cat => `- ${cat}`).join('\r\n'); // Każda kategoria w nowej linii
           const text = ``;
           const html = `
             <h3>Zbiórka śmieci w ${pCode} ${loc}</h3>
