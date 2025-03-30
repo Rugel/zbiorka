@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     const subject = 'Test powiadomienia o zbiórce odpadów';
     const text = 'To jest testowy e-mail z aplikacji Waste Collection Notifier.';
 
-    await sendEmail(to, subject, text);
+    await sendEmail(to, subject, text, text);
 
     return NextResponse.json({ message: 'E-mail wysłany pomyślnie' });
   } catch (error) {
