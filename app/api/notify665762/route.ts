@@ -576,12 +576,12 @@ async function handleNotify(request: Request | null) {
         if (categoriesForToday.length > 0) {
           const subject = `Śmieci! Zbiórka w ${loc} (${checkDate})`;
           const categoriesText = categoriesForToday.map(cat => `- ${cat}`).join('\r\n'); // Każda kategoria w nowej linii
-          const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci w ${pCode} ${loc}:\r\n${categoriesText}\r\n\r\nPamiętaj o wystawieniu pojemników!`;
+          const text = ``;
           const html = `
             <h3>Zbiórka śmieci w ${pCode} ${loc}</h3>
             <p>Dzisiaj ${checkDate} odbywa się zbiórka śmieci:</p>
             <ul>
-              ${categoriesForToday.map(cat => `<li>${cat}</li>`).join('')}
+              ${categoriesForToday.map(cat => `<li>${cat}</li>`).join('')}<br/>
             </ul>
             <p>Pamiętaj o wystawieniu pojemników!</p>
           `;
