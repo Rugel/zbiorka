@@ -23,6 +23,7 @@ export async function sendEmail(to: string, subject: string, text: string, html:
     text: normalizedText,
     html:
      `<h4>Przypomnienie!<h4/>
+     ${html}
       <p style="color:green">${normalizedText}</p>
       <small>Jeśli nie subskrybowałeś powiadomień, zignoruj tę wiadomość.</small>
       <footer>
