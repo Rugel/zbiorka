@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 // Opcjonalnie: wymuś UTF-8 w konfiguracji transportera
 transporter.set('charset', 'utf8');
 
-export async function sendEmail(to: string, subject: string, text: string) {
+export async function sendEmail(to: string, subject: string, text: string, html: string) {
   // Normalizacja tekstu do NFC (dla spójności)
   const normalizedSubject = subject.normalize('NFC');
   const normalizedText = text.normalize('NFC');
