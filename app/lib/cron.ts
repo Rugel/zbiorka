@@ -20,7 +20,7 @@ export async function checkSchedules() {
       await Promise.all(
         subscribers.map(async (email) => {
           try {
-            await sendEmail(email, subject, text);
+            await sendEmail(email, subject, text, text);
             console.log(`Wysłano e-mail do ${email}`);
           } catch (error) {
             console.error(`Błąd wysyłania do ${email}:`, error);
