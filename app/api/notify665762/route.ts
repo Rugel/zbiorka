@@ -406,7 +406,7 @@ async function handleNotify(request: Request | null) {
       if (categoriesForToday.length > 0) {
         const subject = `Śmieci! Zbiórka w ${loc} (${checkDate})`;
         const categoriesText = categoriesForToday.map(cat => `- ${cat}`).join('\n'); // Każda kategoria w nowej linii
-        const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci w ${pCode} ${loc}:\n${categoriesText}\n\nPamiętaj o wystawieniu pojemników!`;
+        const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci w ${pCode} ${loc}: \n ${categoriesText} \n \n Pamiętaj o wystawieniu pojemników!`;
 
         await Promise.all(
           subscribers.map(async (email) => {
