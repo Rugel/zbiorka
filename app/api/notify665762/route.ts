@@ -405,8 +405,8 @@ async function handleNotify(request: Request | null) {
       // Jeśli są jakieś kategorie do wysłania, utwórz jedną wiadomość
       if (categoriesForToday.length > 0) {
         const subject = `Śmieci! Zbiórka w ${loc} (${checkDate})`;
-        const categoriesText = categoriesForToday.map(cat => `- ${cat}`).join('\n'); // Każda kategoria w nowej linii
-        const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci w ${pCode} ${loc}: \n ${categoriesText} \n \n Pamiętaj o wystawieniu pojemników!`;
+        const categoriesText = categoriesForToday.map(cat => `- ${cat}`).join('\r\n'); // Każda kategoria w nowej linii
+        const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci w ${pCode} ${loc}:\r\n${categoriesText}\r\n\r\nPamiętaj o wystawieniu pojemników!`;
 
         await Promise.all(
           subscribers.map(async (email) => {
