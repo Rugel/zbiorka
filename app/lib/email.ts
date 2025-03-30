@@ -25,7 +25,6 @@ export async function sendEmail(to: string, subject: string, text: string, html:
       `<h4>Przypomnienie!<h4/>
       ${normalizedText}
      ${html}
-      <small>Jeśli nie subskrybowałeś powiadomień, zignoruj tę wiadomość.</small>
       <footer>
         <small>Waste Collection Notifier © 2025 <a href='https://zbiorka.vercel.app'>zbiorka.vercel.app</a></small>
       </footer>
