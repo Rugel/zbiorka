@@ -79,8 +79,8 @@ export async function POST(request: Request) {
     const confirmLink = `${process.env.NEXT_PUBLIC_BASE_URL}/api/confirm-subscription?token=${token}&email=${encodeURIComponent(email)}&location=${encodeURIComponent(normalizedLocation)}&postalCode=${encodeURIComponent(postalCode)}`;
 
     // Wyślij email z linkiem potwierdzającym
-    const subject = 'Potwierdź subskrypcję powiadomień o zbiórce śmieci';
-    const text = `Szanowni Państwo,\n\nOtrzymaliśmy prośbę o subskrypcję powiadomień o zbiórce śmieci dla lokalizacji ${normalizedLocation} (${postalCode}).\n\nAby potwierdzić subskrypcję, kliknij w poniższy link:\n${confirmLink}\n\nLink jest ważny przez 24 godziny. Jeśli nie chcesz subskrybować powiadomień, zignoruj tę wiadomość.\n\nPozdrawiamy,\nZespół Zbiorka`;
+    const subject = '';
+    const text = ``;
     const html = `
       <h3>Potwierdź subskrypcję powiadomień o zbiórce śmieci</h3>
       <p>Szanowni Państwo,</p>
