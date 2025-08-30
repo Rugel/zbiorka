@@ -36,12 +36,12 @@ export async function GET(request: Request) {
     await redis.del(pendingKey);
 
     // Wyślij email z potwierdzeniem
-    const subject = '';
+    const subject = 'Potwierdzenie subskrypcji';
     const text = ``;
     const html = `
       <h3>Subskrypcja powiadomień została potwierdzona</h3>
       <p>Szanowni Państwo,</p>
-      <p>Twoja subskrypcja powiadomień o zbiórce śmieci dla lokalizacji ${postalCode} ${location} została pomyślnie potwierdzona.</p>
+      <p>Twoja subskrypcja powiadomień o zbiórce śmieci dla lokalizacji <span style="color: green;">${postalCode} ${location}</span> została pomyślnie potwierdzona.</p>
       <p>Pozdrawiamy,<br>Zespół Zbiorka</p>
     `;
 

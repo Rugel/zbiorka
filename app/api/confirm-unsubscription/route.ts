@@ -42,12 +42,12 @@ export async function GET(request: Request) {
     await redis.del(pendingKey);
 
     // Wyślij email z potwierdzeniem
-    const subject = '';
+    const subject = 'Anulowanie subskrypcji potwierdzone';
     const text = ``;
     const html = `
       <h3>Subskrypcja powiadomień została anulowana</h3>
       <p>Szanowni Państwo,</p>
-      <p>Twoja subskrypcja powiadomień o zbiórce śmieci dla lokalizacji ${postalCode} ${location} została pomyślnie anulowana.</p>
+      <p>Twoja subskrypcja powiadomień o zbiórce śmieci dla lokalizacji <span style="color: green;">${postalCode} ${location}</span> została pomyślnie anulowana.</p>
       <p>Pozdrawiamy,<br>Zespół Zbiorka</p>
     `;
 

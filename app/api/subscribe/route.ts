@@ -84,7 +84,7 @@ export async function POST(request: Request) {
     const html = `
       <h3>Potwierdź subskrypcję powiadomień o zbiórce śmieci</h3>
       <p>Szanowni Państwo,</p>
-      <p>Otrzymaliśmy prośbę o subskrypcję powiadomień o zbiórce śmieci dla lokalizacji ${normalizedLocation} (${postalCode}).</p>
+      <p>Otrzymaliśmy prośbę o subskrypcję powiadomień o zbiórce śmieci dla lokalizacji <span style="color: green;">${postalCode} ${normalizedLocation}</span>.</p>
       <p>Aby potwierdzić subskrypcję, kliknij w poniższy link:</p>
       <p><a href="${confirmLink}">Potwierdź subskrypcję</a></p>
       <p>Link jest ważny przez 24 godziny. Jeśli nie chcesz subskrybować powiadomień, zignoruj tę wiadomość.</p>

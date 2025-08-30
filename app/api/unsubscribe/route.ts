@@ -44,12 +44,12 @@ export async function POST(request: Request) {
     const confirmLink = `${process.env.NEXT_PUBLIC_BASE_URL}/api/confirm-unsubscription?token=${token}&email=${encodeURIComponent(email)}&location=${encodeURIComponent(normalizedLocation)}&postalCode=${encodeURIComponent(postalCode)}`;
 
     // Wyślij email z linkiem potwierdzającym
-    const subject = '';
+    const subject = ' Potwierdzenie anulowania subskrypcji';
     const text = ``;
     const html = `
       <h3>Potwierdź anulowanie subskrypcji powiadomień</h3>
       <p>Szanowni Państwo,</p>
-      <p>Otrzymaliśmy prośbę o anulowanie subskrypcji powiadomień o zbiórce śmieci dla lokalizacji ${normalizedLocation} (${postalCode}).</p>
+      <p>Otrzymaliśmy prośbę o anulowanie subskrypcji powiadomień o zbiórce śmieci dla lokalizacji <span style="color: green;">${postalCode} ${normalizedLocation}</span>.</p>
       <p>Aby potwierdzić anulowanie, kliknij w poniższy link:</p>
       <p><a href="${confirmLink}">Potwierdź anulowanie subskrypcji</a></p>
       <p>Link jest ważny przez 24 godziny. Jeśli nie chcesz anulować subskrypcji, zignoruj tę wiadomość.</p>
