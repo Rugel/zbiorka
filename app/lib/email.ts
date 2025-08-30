@@ -22,8 +22,7 @@ export async function sendEmail(to: string, subject: string, text: string, html:
     subject: normalizedSubject,
     text: normalizedText,
     html:
-      `<h4>Przypomnienie!<h4/>
-      ${normalizedText}
+      `${normalizedText}
      ${html}
       <footer>
         <small>Waste Collection Notifier © 2025 <a href='https://zbiorka.vercel.app'>zbiorka.vercel.app</a></small>

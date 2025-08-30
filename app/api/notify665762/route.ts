@@ -140,6 +140,7 @@ async function handleNotify(request: Request | null) {
         const subject = `Śmieci! Zbiórka w ${loc} (${checkDate})`;
         const text = ``;
         const html = `
+        <h4>Przypomnienie!</h4>
             <h3>Zbiórka śmieci w ${pCode} ${loc}</h3>
             <p>Dzisiaj ${checkDate} odbywa się zbiórka śmieci:</p>
             <ul>
