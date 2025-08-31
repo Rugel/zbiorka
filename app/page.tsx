@@ -123,12 +123,13 @@ export default function Home() {
       </Head>
       <div className="container">
         <Header />
-        <Main />
         <ul className='links'>
           <li><Link className='link' href="/schedule">Dodaj harmonogram</Link></li>
           <li><Link className='link' href="/unsubscribe">Anuluj subskrypcję</Link></li>
         </ul>
+        <Main />
         <div className='subsField'>
+          <h3>Subskrypcja powiadomień e-mail</h3>
           <form onSubmit={handleSubscribe}>
             <input
               type="email"
