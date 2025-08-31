@@ -79,7 +79,7 @@ export async function POST(request: Request) {
     const confirmLink = `${process.env.NEXT_PUBLIC_BASE_URL}/api/confirm-subscription?token=${token}&email=${encodeURIComponent(email)}&location=${encodeURIComponent(normalizedLocation)}&postalCode=${encodeURIComponent(postalCode)}`;
 
     // Wyślij email z linkiem potwierdzającym
-    const subject = '';
+    const subject = 'Potwierdzenie subskrypcji';
     const text = ``;
     const html = `
       <h3>Potwierdź subskrypcję powiadomień o zbiórce śmieci</h3>
