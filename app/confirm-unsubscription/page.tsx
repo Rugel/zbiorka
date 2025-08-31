@@ -15,19 +15,12 @@ export default async function ConfirmUnsubscriptionPage({
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 className="text-2xl font-bold mb-4">
+      <div className='container'>
+        <h1>
           {status === 'success' ? 'Anulowanie subskrypcji' : 'Błąd'}
         </h1>
-        <p className="text-gray-600 mb-4">{message}</p>
-        <Link
-          href="/"
-          className="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Powrót do strony głównej
-        </Link>
+        <p>{message}</p>
+        <Link href="/">Powrót do strony głównej</Link>
       </div>
-    </div>
   );
 }
