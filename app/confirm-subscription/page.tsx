@@ -15,7 +15,7 @@ export default async function ConfirmSubscriptionPage({
   }
 
   return (
-      <div style={{padding: '20px', maxWidth: '600px', margin: '0 auto'}}>
+      <div style={{ marginTop: '40px', maxWidth: '600px', margin: '0 auto'}}>
         <h1>
           {status === 'success' ? 'Potwierdzenie subskrypcji' : 'Błąd'}
         </h1>
