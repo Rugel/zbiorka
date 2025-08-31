@@ -15,11 +15,11 @@ export default async function ConfirmSubscriptionPage({
   }
 
   return (
-      <div style={{ marginTop: '40px', maxWidth: '600px', margin: '0 auto'}}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
         <h1>
           {status === 'success' ? 'Potwierdzenie subskrypcji' : 'Błąd'}
-        </h1>
-        <p>{message}</p>
+        </h1><br />
+        <p>{message}</p><br />
         <Link href="/">Powrót do strony głównej</Link>
       </div>
   );
