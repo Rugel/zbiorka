@@ -21,13 +21,16 @@ export async function sendEmail(to: string, subject: string, text: string, html:
     to,
     subject: normalizedSubject,
     text: normalizedText,
-    html:
-      `${normalizedText}
-     ${html}
-      <footer>
-        <small style="width:100%; text-align:center;">Waste Collection Notifier © 2025 <a href='https://zbiorka.vercel.app'>zbiorka.vercel.app</a></small>
-      </footer>
-    `,
+    html: `
+  ${normalizedText}
+  ${html}
+  <div style="text-align:center; margin-top:20px; font-size:12px; color:#555;">
+    Waste Collection Notifier © 2025 
+    <a href="https://zbiorka.vercel.app" style="color:#555; text-decoration:none;">
+      zbiorka.vercel.app
+    </a>
+  </div>
+`,
     encoding: 'utf8', // Jawne ustawienie kodowania
     charset: 'utf8',  // Ustawienie zestawu znaków
   };
