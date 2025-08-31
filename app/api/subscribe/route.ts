@@ -82,7 +82,7 @@ export async function POST(request: Request) {
     const subject = 'Potwierdzenie subskrypcji';
     const text = ``;
     const html = `
-      <h3>Potwierdź subskrypcję powiadomień o zbiórce śmieci</h3>
+      <h3 style="text-align:center; margin-bottom:20px;">Potwierdź subskrypcję powiadomień o zbiórce śmieci</h3>
       <p>Szanowni Państwo,</p>
       <p>Otrzymaliśmy prośbę o subskrypcję powiadomień o zbiórce śmieci dla lokalizacji <span style="color: green;">${postalCode} ${normalizedLocation}</span>.</p>
       <p>Aby potwierdzić subskrypcję, kliknij w poniższy link:</p>

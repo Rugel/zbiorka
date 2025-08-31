@@ -45,7 +45,7 @@ export async function GET(request: Request) {
     const subject = 'Anulowanie subskrypcji potwierdzone';
     const text = ``;
     const html = `
-      <h3>Subskrypcja powiadomień została anulowana</h3>
+      <h3 style="text-align:center; margin-bottom:20px;">Subskrypcja powiadomień została anulowana</h3>
       <p>Szanowni Państwo,</p>
       <p>Twoja subskrypcja powiadomień o zbiórce śmieci dla lokalizacji <span style="color: green;">${postalCode} ${location}</span> została pomyślnie anulowana.</p>
       <p>Pozdrawiamy,<br>Zespół Zbiorka</p>

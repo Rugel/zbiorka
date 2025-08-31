@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     const subject = 'Potwierdzenie anulowania subskrypcji';
     const text = ``;
     const html = `
-      <h3>Potwierdź anulowanie subskrypcji powiadomień</h3>
+      <h3 style="text-align:center; margin-bottom:20px;">Potwierdź anulowanie subskrypcji powiadomień</h3>
       <p>Szanowni Państwo,</p>
       <p>Otrzymaliśmy prośbę o anulowanie subskrypcji powiadomień o zbiórce śmieci dla lokalizacji <span style="color: green;">${postalCode} ${normalizedLocation}</span>.</p>
       <p>Aby potwierdzić anulowanie, kliknij w poniższy link:</p>
