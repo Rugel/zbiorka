@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 export default function ConfirmUnsubscriptionPage({
   searchParams,
@@ -19,12 +20,12 @@ export default function ConfirmUnsubscriptionPage({
           {status === 'success' ? 'Anulowanie subskrypcji' : 'Błąd'}
         </h1>
         <p className="text-gray-600 mb-4">{message}</p>
-        <a
+        <Link
           href="/"
           className="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Powrót do strony głównej
-        </a>
+        </Link>
       </div>
     </div>
   );
