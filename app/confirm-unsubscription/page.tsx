@@ -15,7 +15,7 @@ export default async function ConfirmUnsubscriptionPage({
   }
 
   return (
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', alignItems: 'center', height: '100vh'}}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '30px', alignItems: 'center', height: '100vh'}}>
         <h1>
           {status === 'success' ? 'Anulowanie subskrypcji' : 'Błąd'}
         </h1>
