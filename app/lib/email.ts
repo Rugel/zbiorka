@@ -25,7 +25,7 @@ export async function sendEmail(to: string, subject: string, text: string, html:
       `${normalizedText}
      ${html}
       <footer>
-        <small>Waste Collection Notifier © 2025 <a href='https://zbiorka.vercel.app'>zbiorka.vercel.app</a></small>
+        <small style="width:100%; text-align:center;">Waste Collection Notifier © 2025 <a href='https://zbiorka.vercel.app'>zbiorka.vercel.app</a></small>
       </footer>
     `,
     encoding: 'utf8', // Jawne ustawienie kodowania

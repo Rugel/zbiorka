@@ -36,7 +36,7 @@ export async function GET(request: Request) {
     await redis.del(pendingKey);
 
     // Wyślij email z potwierdzeniem
-    const subject = 'Potwierdzenie subskrypcji';
+    const subject = 'Subskrypcja potwierdzona';
     const text = ``;
     const html = `
       <h3>Subskrypcja powiadomień została potwierdzona</h3>
