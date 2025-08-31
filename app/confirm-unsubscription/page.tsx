@@ -15,12 +15,12 @@ export default async function ConfirmUnsubscriptionPage({
   }
 
   return (
-      <div style={{padding: '20px', maxWidth: '600px', margin: '0 auto'}}>
+      <div style={{padding: '20px', paddingTop: '40px', maxWidth: '600px', margin: '0 auto'}}>
         <h1>
           {status === 'success' ? 'Anulowanie subskrypcji' : 'Błąd'}
         </h1>
         <p>{message}</p>
-        <Link href="/">Powrót do strony głównej</Link>
+        <Link href="/" style={{ marginTop: '30px' }}>Powrót do strony głównej</Link>
       </div>
   );
 }
