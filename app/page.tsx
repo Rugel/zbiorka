@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Main from './modules/Main';
-import Header from './modules/Heder';
 import Footer from './modules/Footer';
 import Link from 'next/link';
 import Swal from 'sweetalert2'; // Import SweetAlert2
@@ -122,11 +121,6 @@ export default function Home() {
         <meta name="twitter:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
       </Head>
       <div className="container">
-        <Header />
-        <ul className='links'>
-          <li><Link className='link' href="/schedule">Dodaj harmonogram</Link></li>
-          <li><Link className='link' href="/unsubscribe">Anuluj subskrypcję</Link></li>
-        </ul>
         <Main />
         <div className='subsField'>
           <h3>Subskrypcja powiadomień e-mail</h3>
@@ -162,7 +156,6 @@ export default function Home() {
             <button onClick={testEmail}>Test</button>
           </label>
         </div>
-        <Footer />
       </div>
     </>
   );

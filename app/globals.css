@@ -34,9 +34,7 @@ button:hover {
 
 .header {
   padding: 1rem;
-  color: white;
-  background-color: #3C8500;
-  text-align: left;
+  text-align: center;
   min-height: 160px;
   width: 100%;
 }
@@ -77,18 +75,13 @@ input {
   margin-bottom: 2rem;
 }
 
-a {
-  color: blue;
-  font-size: .8rem;
-  -webkit-tap-highlight-color: transparent;
-}
-
 h1 {
-  font-size: 1.4rem;
+  font-size: calc(1rem + 1vw);
 }
 
 h2 {
-  font-size: 1.1rem;
+  font-size: calc(.8rem + 1vw);
+  padding: calc(1rem + 0.5vw) 0;
 }
 
 select {

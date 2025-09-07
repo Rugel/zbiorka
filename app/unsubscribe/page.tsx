@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import Header from '../modules/Heder';
 import Footer from '../modules/Footer';
 import Swal from 'sweetalert2'; // Import SweetAlert2
 
@@ -63,11 +62,6 @@ export default function Home() {
 
   return (
     <div className="container">
-      <Header />
-      <ul className='links'>
-        <li><Link className='link' href="/">HOME</Link></li>
-        <li><Link className='link' href="/schedule">Dodaj harmonogram</Link></li>
-      </ul>
       <div className='subsField'>
         <h3>Anuluj subskrypcję</h3>
         <input
@@ -90,7 +84,6 @@ export default function Home() {
         />
         <button onClick={handleUnsubscribe}>Anuluj subskrypcję</button>
       </div>
-      <Footer />
     </div>
   );
 }

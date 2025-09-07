@@ -89,11 +89,6 @@ export default function Schedule() {
 
   return (
     <div className="container">
-      <Header />
-      <ul className='links'>
-        <li><Link className='link' href="/">HOME</Link></li>
-        <li><Link className='link' href="/unsubscribe">Anuluj subskrypcję</Link></li>
-      </ul>
       <div className='subsField'>
         <h3>Dodaj harmonogram zbiórek</h3>
         <form onSubmit={handleSchedule}>
@@ -135,7 +130,6 @@ export default function Schedule() {
           <button type="submit">Zapisz harmonogram</button>
         </form>
       </div>
-      <Footer />
     </div>
   );
 }
