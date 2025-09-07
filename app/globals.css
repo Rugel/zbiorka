@@ -33,15 +33,8 @@ button:hover {
 }
 
 .header {
-  padding: 1rem;
   text-align: center;
-  min-height: 160px;
-  width: 100%;
-}
-
-.logo {
-  float: left;
-  padding-right: 3vw;
+  background-color: #eeeeee;
 }
 
 .main {
@@ -77,11 +70,14 @@ input {
 
 h1 {
   font-size: calc(1rem + 1vw);
+  padding: calc(1rem + 0.5vw) 0;
+  color: #3C8500;
 }
 
 h2 {
   font-size: calc(.8rem + 1vw);
-  padding: calc(1rem + 0.5vw) 0;
+  color: gray;
+  padding-bottom: calc(1rem + 0.5vw);
 }
 
 select {
@@ -101,13 +97,4 @@ select {
 
 footer a {
   color: white;
-}
-
-.links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10%;
-  list-style-type: none;
 }

@@ -5,6 +5,7 @@ const Header = () => {
                 Zbiórka odpadów komunalnych – ustaw powiadomienia e-mail
             </h1>
             <h2>zasubskrybuj i zapomnij o harmonogramie</h2>
+            <hr />
         </header>
     )
 }
