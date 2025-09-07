@@ -1,8 +1,6 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
-import Footer from '../modules/Footer';
 import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default function Home() {

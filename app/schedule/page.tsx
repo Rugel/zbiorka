@@ -1,9 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Header from '../modules/Heder';
-import Footer from '../modules/Footer';
-import Link from 'next/link';
 import Swal from 'sweetalert2';
 import { wasteCategoryOptions } from '../../utils/wasteCategories';
 
