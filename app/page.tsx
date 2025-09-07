@@ -3,8 +3,6 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Main from './modules/Main';
-import Footer from './modules/Footer';
-import Link from 'next/link';
 import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default function Home() {
