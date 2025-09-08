@@ -27,7 +27,7 @@ export default function Navigation() {
 
   const menuItems = [
     { id: 'home', label: 'Strona główna', href: '/' },
-    { id: 'about', label: 'Subskrypcja', href: '/about' },
+    { id: 'about', label: 'Subskrypcja', href: '/subscribe' },
     { id: 'services', label: 'Anulowanie', href: '/unsubscribe' },
     { id: 'contact', label: 'Kontakt', href: '/contact' }
   ];
