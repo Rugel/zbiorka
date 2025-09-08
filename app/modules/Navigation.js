@@ -6,17 +6,17 @@ import Image from 'next/image';
 
 // Ikony jako komponenty (zamiennik lucide-react)
 const MenuIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-    <line x1="3" y1="6" x2="21" y2="6"></line>
-    <line x1="3" y1="12" x2="21" y2="12"></line>
-    <line x1="3" y1="18" x2="21" y2="18"></line>
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="4">
+    <line x1="6" y1="12" x2="42" y2="12"></line>
+    <line x1="6" y1="24" x2="42" y2="24"></line>
+    <line x1="6" y1="36" x2="42" y2="36"></line>
   </svg>
 );
 
 const CloseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-    <line x1="18" y1="6" x2="6" y2="18"></line>
-    <line x1="6" y1="6" x2="18" y2="18"></line>
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="4">
+    <line x1="36" y1="12" x2="12" y2="36"></line>
+    <line x1="12" y1="12" x2="36" y2="36"></line>
   </svg>
 );
 
@@ -69,14 +69,11 @@ export default function Navigation() {
     menuItem: {
       position: 'relative',
       padding: '0.5rem 0.75rem',
-      fontSize: '1.3rem',
+      fontSize: '1.2rem',
       fontWeight: '600',
       textDecoration: 'none',
       color: '#ffffff',
       cursor: 'pointer'
-    },
-    activeMenuItem: {
-      color: '#ffffff'
     },
     activeIndicator: {
       position: 'absolute',
@@ -110,21 +107,23 @@ export default function Navigation() {
       padding: '0.5rem',
       display: 'flex',
       flexDirection: 'column',
-      gap: '0.25rem'
+      gap: '0.25rem',
+      alignItems: 'center'
     },
     mobileMenuItem: {
       display: 'block',
       padding: '0.5rem 0.75rem',
       borderRadius: '0.375rem',
-      fontSize: '1rem',
-      fontWeight: '500',
+      fontSize: '1.2rem',
+      fontWeight: '600',
       textDecoration: 'none',
       transition: 'all 0.2s',
-      color: '#374151'
+      color: 'black',
+      
     },
     activeMobileMenuItem: {
       color: '#2563eb',
-      backgroundColor: '#eff6ff'
+      backgroundColor: '#eeeeee'
     }
   };
 
