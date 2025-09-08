@@ -20,7 +20,6 @@ export default async function ConfirmUnsubscriptionPage({
           {status === 'success' ? 'Anulowanie subskrypcji' : 'Błąd'}
         </h1>
         <p>{message}</p>
-        <Link href="/">Powrót do strony głównej</Link>
       </div>
   );
 }
