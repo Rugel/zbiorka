@@ -1,28 +1,40 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2';
 
 export default function Home() {
-  const [email, setEmail] = useState('');
-  const [location, setLocation] = useState('');
-  const [postalCode, setPostalCode] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [location, setLocation] = useState<string>('');
+  const [postalCode, setPostalCode] = useState<string>('');
+  const [status, setStatus] = useState<string | null>(null);
 
   const validatePostalCode = (code: string) => {
     const postalCodeRegex = /^\d{2}-\d{3}$/;
     return postalCodeRegex.test(code);
   };
 
-  const handleSubscribe = async (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Walidacja kodu pocztowego
-    if (!validatePostalCode(postalCode)) {
+    if (!email || !location || !postalCode) {
+      setStatus('❌ Proszę wypełnić wszystkie pola.');
       Swal.fire({
         icon: 'error',
         title: 'Błąd!',
-        text: 'Kod pocztowy musi być w formacie XX-XXX (np. 26-025)',
+        text: 'Proszę podać email, miejscowość i kod pocztowy.',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
+
+    if (!validatePostalCode(postalCode)) {
+      setStatus('❌ Nieprawidłowy format kodu pocztowego.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Błąd!',
+        text: 'Kod pocztowy musi być w formacie XX-XXX (np. 26-025).',
         confirmButtonText: 'OK',
       });
       return;
@@ -38,7 +50,7 @@ export default function Home() {
       const data = await res.json();
 
       if (!res.ok) {
-        // Wyświetl błąd za pomocą SweetAlert2
+        setStatus('❌ Coś poszło nie tak...');
         Swal.fire({
           icon: 'error',
           title: 'Błąd!',
@@ -48,7 +60,7 @@ export default function Home() {
         return;
       }
 
-      // Wyświetl sukces za pomocą SweetAlert2
+      setStatus('✅ Subskrypcja dodana!');
       Swal.fire({
         icon: 'success',
         title: 'Sukces!',
@@ -56,7 +68,7 @@ export default function Home() {
         confirmButtonText: 'OK',
       });
     } catch (error) {
-      // Wyświetl błąd sieciowy za pomocą SweetAlert2
+      setStatus('❌ Coś poszło nie tak...');
       Swal.fire({
         icon: 'error',
         title: 'Błąd!',
@@ -67,6 +79,17 @@ export default function Home() {
   };
 
   const testEmail = async () => {
+    if (!email) {
+      setStatus('❌ Proszę podać adres e-mail.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Błąd!',
+        text: 'Proszę podać adres e-mail.',
+        confirmButtonText: 'OK',
+      });
+      return;
+    }
+
     try {
       const res = await fetch('/api/email-test', {
         method: 'POST',
@@ -77,7 +100,7 @@ export default function Home() {
       const data = await res.json();
 
       if (!res.ok) {
-        // Wyświetl błąd za pomocą SweetAlert2
+        setStatus('❌ Coś poszło nie tak...');
         Swal.fire({
           icon: 'error',
           title: 'Błąd!',
@@ -87,7 +110,7 @@ export default function Home() {
         return;
       }
 
-      // Wyświetl sukces za pomocą SweetAlert2
+      setStatus('✅ E-mail testowy wysłany!');
       Swal.fire({
         icon: 'success',
         title: 'Sukces!',
@@ -95,7 +118,7 @@ export default function Home() {
         confirmButtonText: 'OK',
       });
     } catch (error) {
-      // Wyświetl błąd sieciowy za pomocą SweetAlert2
+      setStatus('❌ Coś poszło nie tak...');
       Swal.fire({
         icon: 'error',
         title: 'Błąd!',
@@ -117,42 +140,71 @@ export default function Home() {
         <meta name="twitter:description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy. Dodaj harmonogram zbiórki odpadów komunalnych." />
         <meta name="twitter:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
       </Head>
-      <div className="container">
-        <div className='subsField'>
-          <h3>Subskrypcja powiadomień e-mail</h3>
-          <form onSubmit={handleSubscribe}>
+      <main className="container">
+        <h1 className="title">Subskrypcja powiadomień e-mail</h1>
+        <p className="description">
+          <b>Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy.</b>
+        </p>
+        <form onSubmit={handleSubscribe} className="form">
+          <div className="form-group">
+            <label htmlFor="email" className="label">
+              E-mail
+            </label>
             <input
               type="email"
+              id="email"
+              name="email"
               placeholder="Twój e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="input"
               required
             />
+          </div>
+          <div className="form-group">
+            <label htmlFor="location" className="label">
+              Miejscowość lub ulica
+            </label>
             <input
               type="text"
+              id="location"
+              name="location"
               placeholder="Miejscowość lub ulica"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
+              className="input"
               required
             />
+          </div>
+          <div className="form-group">
+            <label htmlFor="postalCode" className="label">
+              Kod pocztowy
+            </label>
             <input
               type="text"
+              id="postalCode"
+              name="postalCode"
               placeholder="Kod pocztowy (np. 26-025)"
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
+              className="input"
               required
             />
-            <button type="submit">Subskrybuj</button>
-          </form><br />
-          <label>
-            Wpisz swój adres e-mail w odpowiednie pole i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją.
-            <br />
-            Jeśli e-mail nie dotarł, należy sprawdzić folder SPAM i oznaczyć wiadomość jako &quot;nie spam&quot;.
-            <br />
-            <button onClick={testEmail}>Test</button>
-          </label>
+          </div>
+          <button type="submit" className="button">
+            Subskrybuj
+          </button>
+        </form>
+        <div className="test-email-section">
+          <p className="description">
+            Wpisz swój adres e-mail w odpowiednie pole i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją. Jeśli e-mail nie dotarł, sprawdź folder SPAM i oznacz wiadomość jako &quot;nie spam&quot;.
+          </p>
+          <button type="button" onClick={testEmail} className="button">
+            Test
+          </button>
         </div>
-      </div>
+        {status && <p className="status">{status}</p>}
+      </main>
     </>
   );
 }
