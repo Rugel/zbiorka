@@ -12,13 +12,6 @@
   grid-template-rows: auto 1fr auto;
 }
 
-iput {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 8px;
-}
-
 button {
   padding: 10px 20px;
   background-color: #0070f3;
@@ -101,7 +94,7 @@ main {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   font-family: sans-serif;
-  min-height: 61.5vh;
+  min-height: 62vh;
 }
 
 .container {
@@ -166,4 +159,15 @@ main {
 .status {
   margin-top: 16px;
   font-weight: 500;
+}
+
+.test {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.logo{
+  background-color: #ffffff;
+  border-radius: 0px 70px 0px 70px;
 }

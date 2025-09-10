@@ -31,9 +31,9 @@ export default function ContactPage() {
     return (
         <main className="container"
         >
-            <h3 className="title">
+            <u><h3 className="title">
                 Kontakt
-            </h3>
+            </h3></u>
             <p><b>Masz jakieś pytania lub sugestie, skontaktuj się z autorem projektu.</b></p><br />
             <form
                 onSubmit={handleSubmit}

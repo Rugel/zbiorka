@@ -141,7 +141,7 @@ export default function Home() {
         <meta name="twitter:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
       </Head>
       <main className="container">
-        <h3 className="title">Subskrypcja powiadomień e-mail</h3>
+        <u><h3 className="title">Subskrypcja powiadomień e-mail</h3></u>
         <p className="description">
           <b>Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy.</b>
         </p>
@@ -195,9 +195,10 @@ export default function Home() {
             Subskrybuj
           </button>
         </form>
-        <div className="test-email-section">
+        <div className="test">
+          <p className='description'><b>Przetestuj wysyłkę e-mail.</b></p>
           <p className="description">
-            Wpisz swój adres e-mail w odpowiednie pole i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją. Jeśli e-mail nie dotarł, sprawdź folder SPAM i oznacz wiadomość jako &quot;nie spam&quot;.
+            Wpisz swój adres e-mail w pierwsze pole formularza i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją. Jeśli e-mail nie dotarł, sprawdź folder SPAM i <b>oznacz wiadomość jako &quot;nie spam&quot;</b>.
           </p>
           <button type="button" onClick={testEmail} className="button">
             Test

@@ -62,7 +62,7 @@ export default function Home() {
 
   return (
     <main className="container">
-      <h3 className="title">Anuluj subskrypcję</h3>
+      <u><h3 className="title">Anuluj subskrypcję</h3></u>
       <p className="description">
         <b>Wypełnij poniższe pola, aby anulować subskrypcję.</b>
       </p>

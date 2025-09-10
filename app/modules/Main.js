@@ -1,14 +1,14 @@
 const Main = () =>
     <main className="container">
-        <h3 className="title">TrashAlert</h3>
+        <u><h3 className="title">TrashAlert</h3></u>
         <p className="description">
-            <b>Skorzystaj z aplikacji aby zacząć otrzymywać wiadomości e-mail</b>
+            <b>Skorzystaj z aplikacji aby zacząć otrzymywać wiadomości e-mail w dniu zbiórki odpadów.</b>
         </p>
-        <p>Czy zdarza Ci się zapomnieć o dniu odbioru śmieci? A może zastanawiasz się, kiedy wystawić żółty worek na plastiki, a kiedy zielony na szkło? Dzięki naszej nowej aplikacji <strong>Powiadomienia o zbiórce odpadów</strong> możesz raz na zawsze pożegnać się z chaosem w harmonogramie wywozu śmieci. To proste, intuicyjne rozwiązanie - bez instalowania kolejnej aplikacji na Twoim telefonie - pomoże Ci zadbać o porządek w Twoim domu i otoczeniu.</p>
+        <p>Czy zdarza Ci się zapomnieć o dniu odbioru śmieci? A może zastanawiasz się, kiedy wystawić żółty worek na plastiki, a kiedy zielony na szkło?<br />Dzięki aplikacji <strong>TrashAlert</strong> możesz pożegnać się z harmonogramem wywozu odpadów komunalnych.<br />To proste, intuicyjne rozwiązanie - bez instalowania kolejnej aplikacji na Twoim telefonie - pomoże Ci zadbać o porządek w Twoim domu i otoczeniu.</p>
         <br />
         <h3>Dlaczego warto skorzystać z naszej aplikacji?</h3>
         <p>Żyjemy w czasach, gdy segregacja odpadów stała się obowiązekiem. Jednak śledzenie harmonogramów odbioru różnych frakcji – od zmieszanych odpadów komunalnych po zużyty sprzęt elektroniczny – może być uciążliwe. Nasza aplikacja powstała, by ułatwić Ci to zadanie.</p><br />
-        <p>Oto, co zyskujesz:</p>
+        <h3>Oto, co zyskujesz:</h3>
         <ul>
             <li><strong>Spersonalizowane powiadomienia e-mail</strong> – dostaniesz przypomnienie dokładnie wtedy, gdy będzie Ci potrzebne, prosto na swoją skrzynkę.</li>
             <li><strong>Rozróżnienie kategorii odpadów</strong> – zmieszane, tworzywa sztuczne, szkło, papier, bio, odpady wielkogabarytowe czy elektronika – każda frakcja ma swój harmonogram.</li>

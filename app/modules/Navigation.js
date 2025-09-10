@@ -139,8 +139,8 @@ export default function Navigation() {
       <div style={styles.container}>
         <div style={styles.navbar}>
           {/* Logo */}
-          <div>
-            <Link href="/" title="Przejdź na stronę główną"><Image src={'/logo.png'} alt='Logo' width={130} height={130} /></Link>
+          <div className='logo'>
+            <Link href="/" title="Przejdź na stronę główną"><Image src={'/logo.png'} alt='Logo' width={210} height={100} /></Link>
           </div>
 
           {/* Desktop Menu */}
