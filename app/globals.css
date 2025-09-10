@@ -39,7 +39,7 @@ button:hover {
 .main {
   max-width: 700px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
 }
 
 .subsField {
@@ -63,15 +63,15 @@ button:hover {
 }
 
 h1 {
-  font-size: calc(.8rem + 1vw);
-  padding: calc(1rem + 0.5vw) 0;
+  font-size: 1.5rem;
+  padding: 1rem;
   color: #3C8500;
 }
 
 h2 {
-  font-size: calc(.8rem + 1vw);
+  font-size: 1.2rem;
   color: gray;
-  padding-bottom: calc(1rem + 0.5vw);
+  padding-bottom: 1rem;
 }
 
 select {
@@ -101,12 +101,13 @@ main {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   font-family: sans-serif;
+  min-height: 61.5vh;
 }
 
 .container {
   max-width: 600px;
-  margin: 40px auto;
-  padding: 24px;
+  margin: 20px auto;
+  padding: 20px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);

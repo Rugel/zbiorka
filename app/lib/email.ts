@@ -26,7 +26,7 @@ export async function sendEmail(to: string, subject: string, text: string, html:
   ${html}
   <hr/>
   <div style="text-align:center; margin-top:10px; font-size:12px; color:#555;">
-    Waste Collection Notifier © 2025 
+    TrashAlert © 2025
     <a href="https://zbiorka.vercel.app">
       zbiorka.vercel.app
     </a>
