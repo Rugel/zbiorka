@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Main from './modules/Main';
 
 export default function Home() {
-  
+
 
   return (
     <>
@@ -18,9 +18,7 @@ export default function Home() {
         <meta name="twitter:description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy. Dodaj harmonogram zbiórki odpadów komunalnych." />
         <meta name="twitter:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
       </Head>
-      <div className="container">
-        <Main />
-      </div>
+      <Main />
     </>
   );
 }

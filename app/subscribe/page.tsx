@@ -141,7 +141,7 @@ export default function Home() {
         <meta name="twitter:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
       </Head>
       <main className="container">
-        <h1 className="title">Subskrypcja powiadomień e-mail</h1>
+        <h3 className="title">Subskrypcja powiadomień e-mail</h3>
         <p className="description">
           <b>Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy.</b>
         </p>
@@ -162,21 +162,6 @@ export default function Home() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="location" className="label">
-              Miejscowość lub ulica
-            </label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              placeholder="Miejscowość lub ulica"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              className="input"
-              required
-            />
-          </div>
-          <div className="form-group">
             <label htmlFor="postalCode" className="label">
               Kod pocztowy
             </label>
@@ -184,9 +169,24 @@ export default function Home() {
               type="text"
               id="postalCode"
               name="postalCode"
-              placeholder="Kod pocztowy (np. 26-025)"
+              placeholder='np."26-038'
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
+              className="input"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="location" className="label">
+              Ulica i miejscowość
+            </label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              placeholder='np. "Słoneczna Kielce"'
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
               className="input"
               required
             />

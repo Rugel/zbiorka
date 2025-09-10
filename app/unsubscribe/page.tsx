@@ -62,7 +62,7 @@ export default function Home() {
 
   return (
     <main className="container">
-      <h1 className="title">Anuluj subskrypcję</h1>
+      <h3 className="title">Anuluj subskrypcję</h3>
       <p className="description">
         <b>Wypełnij poniższe pola, aby anulować subskrypcję.</b>
       </p>
@@ -83,21 +83,6 @@ export default function Home() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="location" className="label">
-            Ulica i miejscowość
-          </label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            placeholder='np. "Słoneczna Kielce"'
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            className="input"
-            required
-          />
-        </div>
-        <div className="form-group">
           <label htmlFor="postalCode" className="label">
             Kod pocztowy
           </label>
@@ -108,6 +93,21 @@ export default function Home() {
             placeholder='np. "26-038"'
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
+            className="input"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="location" className="label">
+            Ulica i miejscowość
+          </label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            placeholder='np. "Słoneczna Kielce"'
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
             className="input"
             required
           />

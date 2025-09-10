@@ -1,7 +1,11 @@
 import Link from "next/link";
 
 const Main = () =>
-    <main className="main">
+    <main className="container">
+        <h3 className="title">Waste Collection Notifier</h3>
+        <p className="description">
+            <b>Skorzystaj z aplikacji aby zacząć otrzymywać wiadomości e-mail</b>
+        </p>
         <p>Czy zdarza Ci się zapomnieć o dniu odbioru śmieci? A może zastanawiasz się, kiedy wystawić żółty worek na plastiki, a kiedy zielony na szkło? Dzięki naszej nowej aplikacji <strong>Powiadomienia o zbiórce odpadów</strong> możesz raz na zawsze pożegnać się z chaosem w harmonogramie wywozu śmieci. To proste, intuicyjne i nowoczesne rozwiązanie, które pomoże Ci zadbać o porządek w Twoim domu i środowisku.</p>
         <br />
         <h3>Dlaczego warto skorzystać z naszej aplikacji?</h3>
@@ -17,22 +21,21 @@ const Main = () =>
         <h3>Jak to działa?</h3>
         <ol>
             <li><strong>Subskrybuj swoją lokalizację</strong><br />Wpisz swój adres e-mail, miejscowość (lub ulicę) oraz kod pocztowy.</li>
-            <li><strong>Dodaj harmonogram</strong><br />Jeśli podczas subskrypcji dostaniesz informację o braku harmonogramu dla danej lokalizacji, skorzystaj z zakładki <b><Link href='./schedule'>dodaj harmonogram</Link></b>. Wprowadź daty odbioru dla każdej kategorii odpadów – od zmieszanych po elektronikę. Z utworzonego przez Ciebie harmonogramu będą mogli skorzystać mieszkańcy tej miejscowości lub ulicy.</li>
             <li><strong>Otrzymuj przypomnienia</strong><br />W dniu zbiórki dostaniesz e-mail z informacją, np.: „Dzisiaj 2025-03-18 odbywa się zbiórka tworzyw sztucznych, metalu i opakowań wielomateriałowych (worek żółty) w Pacanowie”</li>
             <li><strong>Testuj i dostosuj</strong><br />Nie jesteś pewien, czy e-maile dotrą? Skorzystaj z opcji testowej, aby sprawdzić działanie powiadomień. Jeśli wiadomość wpadnie do spamu, oznacz ją jako „nie spam”.</li>
         </ol>
         <br />
-        <h3>Kategorie odpadów pod kontrolą</h3>
+        <h3>Kategorie odpadów pod kontrolą</h3><br />
         <p>Nasza aplikacja wspiera pełną segregację, obejmując wszystkie najważniejsze frakcje:</p>
-        <ul>
-            <li><strong>Zmieszane odpady komunalne</strong> – dla odpadów, które nie nadają się do recyklingu.</li>
-            <li><strong>Tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)</strong> – plastikowe butelki, puszki czy kartony po mleku.</li>
-            <li><strong>Szkło białe i kolorowe (worek zielony)</strong> – słoiki i butelki, które zyskują nowe życie.</li>
-            <li><strong>Papier, tektura (worek niebieski)</strong> – gazety, kartony i opakowania papierowe.</li>
-            <li><strong>Odpady biodegradowalne (worek brązowy)</strong> – resztki jedzenia i odpady organiczne.</li>
-            <li><strong>Odpady wielkogabarytowe</strong> – stare meble czy materace.</li>
-            <li><strong>Zużyty sprzęt elektryczny i elektroniczny</strong> – od zepsutych lodówek po stare telefony.</li>
-        </ul>
+        <p><strong>🗑️ Zmieszane odpady komunalne</strong> – dla odpadów, które nie nadają się do recyklingu.</p>
+        <p><strong>🟡 Tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)</strong> – plastikowe butelki, puszki czy kartony po mleku.</p>
+        <p><strong>🟢 Szkło białe i kolorowe (worek zielony)</strong> – słoiki i butelki, które zyskują nowe życie.</p>
+        <p><strong>🔵 Papier, tektura (worek niebieski)</strong> – gazety, kartony i opakowania papierowe.</p>
+        <p><strong>🟤 Odpady biodegradowalne (worek brązowy)</strong> – resztki jedzenia i odpady organiczne.</p>
+        <p><strong>🪑 Odpady wielkogabarytowe</strong> – stare meble czy materace.</p>
+        <p><strong>📻 Zużyty sprzęt elektryczny i elektroniczny</strong> – od zepsutych lodówek po stare telefony.</p>
+        <p><strong>🚬popiół</strong> - popiół uzyskany ze spalania drewna lub węgla.</p>
+
         <p>Dzięki temu masz pewność, że każdy worek trafi na ulicę w odpowiednim czasie.</p>
     </main>;
 
