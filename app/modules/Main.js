@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const Main = () =>
     <main className="container">
         <h3 className="title">Waste Collection Notifier</h3>
