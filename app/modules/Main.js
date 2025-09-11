@@ -6,7 +6,7 @@ const Main = () =>
         </p>
         <p>Czy zdarza Ci się zapomnieć o dniu odbioru śmieci? A może zastanawiasz się, kiedy wystawić żółty worek na plastiki, a kiedy zielony na szkło?<br />Dzięki aplikacji <strong>TrashAlert</strong> możesz pożegnać się z harmonogramem wywozu odpadów komunalnych.<br />To proste, intuicyjne rozwiązanie - bez instalowania kolejnej aplikacji na Twoim telefonie - pomoże Ci zadbać o porządek w Twoim domu i otoczeniu.</p>
         <br />
-        <h3>Obecna lista lokalizacji dla których dostępne są powiadomienia e-mail:</h3>
+        <h3>Obecna lista lokalizacji dla których harmonogramy zbiórek znajdują się w bazie danych:</h3>
             <ul>
                 <li>gm. <b>Łagów</b>, pow. kielecki, woj. świętokrzyskie</li>
             </ul>
