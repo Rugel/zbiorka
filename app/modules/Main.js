@@ -6,7 +6,12 @@ const Main = () =>
         </p>
         <p>Czy zdarza Ci się zapomnieć o dniu odbioru śmieci? A może zastanawiasz się, kiedy wystawić żółty worek na plastiki, a kiedy zielony na szkło?<br />Dzięki aplikacji <strong>TrashAlert</strong> możesz pożegnać się z harmonogramem wywozu odpadów komunalnych.<br />To proste, intuicyjne rozwiązanie - bez instalowania kolejnej aplikacji na Twoim telefonie - pomoże Ci zadbać o porządek w Twoim domu i otoczeniu.</p>
         <br />
-        <h3>Dlaczego warto skorzystać z naszej aplikacji?</h3>
+        <h3>Obecna lista lokalizacji dla których dostępne są powiadomienia e-mail:</h3>
+            <ul>
+                <li>gm. <b>Łagów</b>, pow. kielecki, woj. świętokrzyskie</li>
+            </ul>
+        <br />
+        <h3>Dlaczego warto skorzystać z aplikacji TrashAlert?</h3>
         <p>Żyjemy w czasach, gdy segregacja odpadów stała się obowiązekiem. Jednak śledzenie harmonogramów odbioru różnych frakcji – od zmieszanych odpadów komunalnych po zużyty sprzęt elektroniczny – może być uciążliwe. Nasza aplikacja powstała, by ułatwić Ci to zadanie.</p><br />
         <h3>Oto, co zyskujesz:</h3>
         <ul>
