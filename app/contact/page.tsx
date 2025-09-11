@@ -76,6 +76,7 @@ export default function ContactPage() {
                 </div>
                 <button
                     type="submit"
+                    className="button"
                     onMouseOver={(e) =>
                         (e.currentTarget.style.background = "#1e40af")
                     }
