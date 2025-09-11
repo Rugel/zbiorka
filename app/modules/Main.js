@@ -22,7 +22,7 @@ const Main = () =>
             <li><strong>Testuj i dostosuj</strong><br />Nie jesteś pewien, czy e-maile dotrą? Skorzystaj z testu, aby sprawdzić działanie powiadomień. Jeśli wiadomość wpadnie do spamu, oznacz ją jako „nie spam”.</li>
         </ol>
         <br />
-        <h3>Kategorie odpadów pod kontrolą</h3><br />
+        <h3>Kategorie odpadów pod kontrolą</h3>
         <p>Nasza aplikacja wspiera pełną segregację, obejmując wszystkie najważniejsze frakcje:</p>
         <p><strong>🗑️ Zmieszane odpady komunalne</strong> – dla odpadów, które nie nadają się do recyklingu.</p>
         <p><strong>🟡 Tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)</strong> – plastikowe butelki, puszki czy kartony po mleku.</p>

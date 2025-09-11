@@ -64,7 +64,7 @@ export default function Navigation() {
     desktopMenu: {
       display: 'flex',
       alignItems: 'center',
-      gap: '2rem'
+      gap: '4vw',
     },
     menuItem: {
       position: 'relative',
