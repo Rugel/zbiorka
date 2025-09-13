@@ -48,7 +48,7 @@ export default async function ConfirmSubscriptionPage({
         margin: 0,
           }}
         >
-          {message}
+          <p style={{ color: '#222', fontSize: '1.1rem', textAlign: 'center' }}>{message}</p>
         </p>
       </div>
   );
