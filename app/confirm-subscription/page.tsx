@@ -14,11 +14,42 @@ export default async function ConfirmSubscriptionPage({
   }
 
   return (
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '30px', alignItems: 'center', height: '100vh'}}>
-        <h1>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '60vh',
+          background: '#fff',
+          borderRadius: 12,
+          boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
+          padding: 32,
+          maxWidth: 400,
+          margin: '40px auto',
+        }}
+      >
+        <h1
+          style={{
+        color: status === 'success' ? '#2e7d32' : '#c62828',
+        marginBottom: 16,
+        fontSize: 28,
+        fontWeight: 700,
+        textAlign: 'center',
+          }}
+        >
           {status === 'success' ? 'Potwierdzenie subskrypcji' : 'Błąd'}
         </h1>
-        <p>{message}</p>
+        <p
+          style={{
+        color: '#333',
+        fontSize: 18,
+        textAlign: 'center',
+        margin: 0,
+          }}
+        >
+          {message}
+        </p>
       </div>
   );
 }

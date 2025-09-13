@@ -14,11 +14,31 @@ export default async function ConfirmUnsubscriptionPage({
   }
 
   return (
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '30px', alignItems: 'center', height: '100vh'}}>
-        <h1>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '60vh',
+          background: '#fff',
+          borderRadius: '12px',
+          boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
+          padding: '2rem',
+          maxWidth: '400px',
+          margin: '3rem auto'
+        }}
+      >
+        <h1
+          style={{
+        color: status === 'success' ? '#16a34a' : '#dc2626',
+        marginBottom: '1rem',
+        fontSize: '2rem'
+          }}
+        >
           {status === 'success' ? 'Anulowanie subskrypcji' : 'Błąd'}
         </h1>
-        <p>{message}</p>
+        <p style={{ color: '#222', fontSize: '1.1rem', textAlign: 'center' }}>{message}</p>
       </div>
   );
 }
