@@ -140,7 +140,7 @@ export default function Navigation() {
         <div style={styles.navbar}>
           {/* Logo */}
           <div className='logo'>
-            <Link href="/" title="Przejdź na stronę główną"><Image src={'/logo.png'} alt='Logo' width={210} height={100} /></Link>
+            <Link href="/" title="Przejdź na stronę główną"><Image src={'/logo.png'} alt='Logo' width={210} height={110} /></Link>
           </div>
 
           {/* Desktop Menu */}
