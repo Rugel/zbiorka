@@ -26,7 +26,7 @@ export default async function ConfirmSubscriptionPage({
           boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
           padding: 32,
           maxWidth: 400,
-          margin: '1rem .5rem',
+          margin: '1rem auto',
         }}
       >
         <h1
