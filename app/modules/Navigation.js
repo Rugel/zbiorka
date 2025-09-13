@@ -73,7 +73,8 @@ export default function Navigation() {
       fontWeight: '600',
       textDecoration: 'none',
       color: '#ffffff',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      textShadow: '0 2px 8px rgba(0, 0, 0, 1)'
     },
     activeIndicator: {
       position: 'absolute',
@@ -112,14 +113,13 @@ export default function Navigation() {
     },
     mobileMenuItem: {
       display: 'block',
-      padding: '0.5rem 0.75rem',
+      padding: '.5rem 0.75rem',
       borderRadius: '0.375rem',
       fontSize: '1.2rem',
       fontWeight: '600',
       textDecoration: 'none',
       transition: 'all 0.2s',
       color: 'black',
-      
     },
     activeMobileMenuItem: {
       color: '#2563eb',
@@ -140,7 +140,7 @@ export default function Navigation() {
         <div style={styles.navbar}>
           {/* Logo */}
           <div className='logo'>
-            <Link href="/" title="Przejdź na stronę główną"><Image src={'/logo.png'} alt='Logo' width={210} height={110} /></Link>
+            <Link href="/" title="Przejdź na stronę główną"><Image src={'/logo.png'} alt='Logo' width={200} height={110} /></Link>
           </div>
 
           {/* Desktop Menu */}
