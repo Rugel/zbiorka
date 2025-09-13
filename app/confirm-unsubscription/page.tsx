@@ -26,7 +26,7 @@ export default async function ConfirmUnsubscriptionPage({
           boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
           padding: '2rem',
           maxWidth: '400px',
-          margin: '3rem auto'
+          margin: '1rem .5rem'
         }}
       >
         <h1
