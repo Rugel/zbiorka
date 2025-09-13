@@ -23,7 +23,7 @@ export async function sendEmail(to: string, subject: string, text: string, html:
     text: normalizedText,
     html: `
   <div style="text-align:left; margin-bottom:10px;">
-    <img src="https://zbiorka.vercel.app/logo.png" alt="Zbiórka Odpadów Logo" style="max-width:240px; height:auto; background-color: #fff; border-radius: 0 70px;" />
+    <img src="https://zbiorka.vercel.app/logo.png" alt="Zbiórka Odpadów Logo" style="max-width:240px; height:auto; background-color: #fff!important; border-radius: 0 70px;" />
   </div>
   ${normalizedText}
   ${html}
