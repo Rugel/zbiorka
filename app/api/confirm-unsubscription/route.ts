@@ -11,9 +11,8 @@ export async function GET(request: Request) {
     const postalCode = searchParams.get('postalCode');
 
     if (!token || !email || !location || !postalCode) {
-      return NextResponse.json(
-        { error: 'Brak wymaganych parametrów (token, email, location, postalCode)' },
-        { status: 400 }
+      return NextResponse.redirect(
+        new URL('/confirm-unsubscription?status=error&message=Brak wymaganych parametrów (token, email, location, postalCode)', request.url)
       );
     }
 
@@ -23,18 +22,16 @@ export async function GET(request: Request) {
     // Sprawdź, czy istnieje tymczasowe żądanie anulowania
     const pendingData = await redis.hgetall(pendingKey);
     if (!pendingData || pendingData.token !== token) {
-      return NextResponse.json(
-        { error: 'Nieprawidłowy lub wygasły token' },
-        { status: 400 }
+      return NextResponse.redirect(
+        new URL('/confirm-unsubscription?status=error&message=Nieprawidłowy lub wygasły token', request.url)
       );
     }
 
     // Usuń subskrypcję z Redis
     const result = await redis.srem(subscriptionKey, email);
     if (result === 0) {
-      return NextResponse.json(
-        { error: 'Subskrypcja nie została znaleziona' },
-        { status: 404 }
+      return NextResponse.redirect(
+        new URL('/confirm-unsubscription?status=error&message=Subskrypcja nie została znaleziona', request.url)
       );
     }
 
@@ -42,23 +39,23 @@ export async function GET(request: Request) {
     await redis.del(pendingKey);
 
     // Wyślij email z potwierdzeniem
-    const subject = 'Subskrypcja powiadomień została anulowana';
-    const text = `Szanowni Państwo,\n\nTwoja subskrypcja powiadomień o zbiórce śmieci dla lokalizacji ${location} (${postalCode}) została pomyślnie anulowana.\n\nPozdrawiamy,\nZespół Zbiorka`;
+    const subject = 'Anulowanie subskrypcji potwierdzone';
+    const text = ``;
     const html = `
-      <h3>Subskrypcja powiadomień została anulowana</h3>
+      <h3 style="text-align:center; margin-bottom:20px;">Subskrypcja powiadomień została anulowana</h3>
       <p>Szanowni Państwo,</p>
-      <p>Twoja subskrypcja powiadomień o zbiórce śmieci dla lokalizacji ${location} (${postalCode}) została pomyślnie anulowana.</p>
+      <p>Twoja subskrypcja powiadomień o zbiórce śmieci dla lokalizacji <span style="color: green;">${postalCode} ${location}</span> została pomyślnie anulowana.</p>
       <p>Pozdrawiamy,<br>Zespół Zbiorka</p>
     `;
-
     await sendEmail(email, subject, text, html);
 
-    return NextResponse.json({ message: 'Subskrypcja została pomyślnie anulowana' });
+    return NextResponse.redirect(
+      new URL('/confirm-unsubscription?status=success&message=Subskrypcja została pomyślnie anulowana', request.url)
+    );
   } catch (error) {
     console.error('Błąd w /api/confirm-unsubscription:', error);
-    return NextResponse.json(
-      { error: 'Wystąpił błąd serwera', details: error instanceof Error ? error.message : 'Nieznany błąd' },
-      { status: 500 }
+    return NextResponse.redirect(
+      new URL('/confirm-unsubscription?status=error&message=Wystąpił błąd serwera', request.url)
     );
   }
 }

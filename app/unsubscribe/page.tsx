@@ -1,18 +1,41 @@
 'use client';
 
-import Link from 'next/link';
-import { useState } from 'react';
-import Header from '../modules/Heder';
-import Footer from '../modules/Footer';
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-export default function Home() {
-  const [email, setEmail] = useState('');
-  const [location, setLocation] = useState('');
-  const [postalCode, setPostalCode] = useState('');
+export default function Unsubscribe() {
+  const [email, setEmail] = useState<string>('');
+  const [location, setLocation] = useState<string>('');
+  const [postalCode, setPostalCode] = useState<string>('');
+  const [status, setStatus] = useState<string | null>(null);
+  const [suggestions, setSuggestions] = useState<string[]>([]); // Lista sugestii miejscowości/ulic
 
-  const handleUnsubscribe = async () => {
-    // Walidacja pól
+  // Pobieranie sugestii na podstawie kodu pocztowego
+  const fetchSuggestions = async (code: string) => {
+    if (!code) {
+      setSuggestions([]);
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/locations?postalCode=${encodeURIComponent(code)}`);
+      const data = await res.json();
+
+      if (!res.ok) {
+        setSuggestions([]);
+        return;
+      }
+
+      setSuggestions(data.locations || []);
+    } catch (error) {
+      setSuggestions([]);
+      console.error('Błąd podczas pobierania sugestii:', error);
+    }
+  };
+
+  const handleUnsubscribe = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     if (!email || !location || !postalCode) {
       Swal.fire({
         icon: 'error',
@@ -33,7 +56,7 @@ export default function Home() {
       const data = await res.json();
 
       if (!res.ok) {
-        // Wyświetl błąd za pomocą SweetAlert2
+        setStatus('❌ Coś poszło nie tak...');
         Swal.fire({
           icon: 'error',
           title: 'Błąd!',
@@ -43,7 +66,7 @@ export default function Home() {
         return;
       }
 
-      // Wyświetl sukces za pomocą SweetAlert2
+      setStatus('✅ Subskrypcja będzie anulowana po kliknięciu w link zawarty w wiadomości E-mail!');
       Swal.fire({
         icon: 'success',
         title: 'Sukces!',
@@ -51,7 +74,7 @@ export default function Home() {
         confirmButtonText: 'OK',
       });
     } catch (error) {
-      // Wyświetl błąd sieciowy za pomocą SweetAlert2
+      setStatus('❌ Coś poszło nie tak...');
       Swal.fire({
         icon: 'error',
         title: 'Błąd!',
@@ -61,36 +84,79 @@ export default function Home() {
     }
   };
 
+  // Efekt do pobierania sugestii przy zmianie kodu pocztowego
+  useEffect(() => {
+    if (postalCode) {
+      fetchSuggestions(postalCode);
+    } else {
+      setSuggestions([]);
+    }
+  }, [postalCode]);
+
   return (
-    <div className="container">
-      <Header />
-      <ul className='links'>
-        <li><Link className='link' href="/">HOME</Link></li>
-        <li><Link className='link' href="/schedule">Dodaj harmonogram</Link></li>
-      </ul>
-      <div className='subsField'>
-        <h3>Anuluj subskrypcję</h3>
-        <input
-          type="email"
-          placeholder="Twój email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Miejscowość"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Kod pocztowy (np. 26-038)"
-          value={postalCode}
-          onChange={(e) => setPostalCode(e.target.value)}
-        />
-        <button onClick={handleUnsubscribe}>Anuluj subskrypcję</button>
-      </div>
-      <Footer />
-    </div>
+    <main className="container">
+      <u><h3 className="title">Anuluj subskrypcję</h3></u>
+      <p className="description">
+        <b>Wypełnij poniższe pola, aby anulować subskrypcję a następnie potwierdź akcję w otrzymanej wiadomości e-mail klikając w odpowiedni link.</b>
+      </p>
+      <form className="form">
+        <div className="form-group"> 
+          <label htmlFor="email" className="label">
+            E-mail
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder='np. "nowak@przyklad.com"'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="input"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="postalCode" className="label">
+            Kod pocztowy
+          </label>
+          <input
+            type="text"
+            id="postalCode"
+            name="postalCode"
+            placeholder='np. "26-038"'
+            value={postalCode}
+            onChange={(e) => setPostalCode(e.target.value)}
+            className="input"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="location" className="label">
+            Ulica i miejscowość
+          </label>
+          <select
+            id="location"
+            name="location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="input"
+            required
+          >
+            <option value="" disabled>
+              wybierz lokalizację
+            </option>
+            {suggestions.map((suggestion, index) => (
+              <option key={index} value={suggestion}>
+                {suggestion}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button type="button" onClick={handleUnsubscribe} className="button">
+          Anuluj subskrypcję
+        </button>
+      </form>
+      {status && <p className="status">{status}</p>}
+    </main>
   );
 }

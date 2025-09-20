@@ -1,4 +1,7 @@
 import './globals.css';
+import Header from './modules/Heder';
+import Navigation from './modules/Navigation';
+import Footer from './modules/Footer';
 
 export const metadata = {
   title: "Zbiórka odpadów komunalnych, powiadomień e-mail, harmonogram",
@@ -16,7 +19,12 @@ export default function RootLayout({
       <head>
       <meta name="apple-mobile-web-app-title" content="Zbiórka" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Navigation />
+        <Header />
+        {children}
+        <Footer />
+        </body>
     </html>
   );
 }

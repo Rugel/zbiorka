@@ -83,7 +83,7 @@ async function handleNotify(request: Request | null) {
       const subject = `${categoryLabels[category]} w ${normalizedLocation}`;
       const text = `Dzisiaj ${checkDate} odbywa się zbiórka śmieci z kategorii "${categoryLabels[category]}" w ${postalCode} ${normalizedLocation}. Pamiętaj o wystawieniu pojemników!`;
       const html = `
-        <h3>Zbiórka śmieci w ${postalCode} ${normalizedLocation}</h3>
+        <h3 style="text-align:center; margin-bottom:20px;">Zbiórka śmieci w ${postalCode} ${normalizedLocation}</h3>
         <p>Dzisiaj ${checkDate} odbywa się zbiórka śmieci z kategorii:</p>
         <ul>
           <li>${categoryLabels[category]}</li>
@@ -140,6 +140,7 @@ async function handleNotify(request: Request | null) {
         const subject = `Śmieci! Zbiórka w ${loc} (${checkDate})`;
         const text = ``;
         const html = `
+        <h4>Przypomnienie!</h4>
             <h3>Zbiórka śmieci w ${pCode} ${loc}</h3>
             <p>Dzisiaj ${checkDate} odbywa się zbiórka śmieci:</p>
             <ul>
