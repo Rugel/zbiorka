@@ -2,6 +2,7 @@ import './globals.css';
 import Header from './modules/Heder';
 import Navigation from './modules/Navigation';
 import Footer from './modules/Footer';
+import CookieConsent from './modules/CookieConsent';
 
 export const metadata = {
   title: "Zbiórka odpadów komunalnych, powiadomień e-mail, harmonogram",
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <CookieConsent />
         </body>
     </html>
   );
