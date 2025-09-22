@@ -88,7 +88,7 @@ export async function POST(request: Request) {
       <p>Aby potwierdzić subskrypcję, kliknij w poniższy link:</p>
       <p><a href="${confirmLink}">Potwierdź subskrypcję</a></p>
       <p>Link jest ważny przez 24 godziny. Jeśli nie chcesz subskrybować powiadomień, zignoruj tę wiadomość.</p>
-      <p>Pozdrawiamy,<br>Zespół Zbiorka</p>
+      <p>Pozdrawiam,<br>Autor TrashAlert</p>
     `;
 
     await sendEmail(email, subject, text, html);
