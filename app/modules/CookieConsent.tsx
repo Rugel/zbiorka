@@ -26,7 +26,7 @@ export default function CookieConsent() {
         Używamy plików cookies, aby poprawić jakość korzystania ze strony. 
         <Link href="/cookies" className="cookie-link">Dowiedz się więcej</Link>
       </p>
-      <button onClick={acceptCookies}>Akceptuję</button>
+      <button onClick={acceptCookies}>AKCEPTUJĘ</button>
     </div>
   );
 }
