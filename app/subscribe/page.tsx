@@ -159,6 +159,7 @@ export default function Subscribe() {
     } else {
       setSuggestions([]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postalCode]);
 
   return (

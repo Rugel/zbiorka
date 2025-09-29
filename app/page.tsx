@@ -1,69 +1,53 @@
 'use client';
 
-import Head from 'next/head';
-import Main from './modules/Main';
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        {/* Podstawowe metadane */}
-        <title>Zbiórka odpadów komunalnych - Powiadomienia e-mail, Harmonogram 2025</title>
-        <meta name="description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla swojej miejscowości lub ulicy. Harmonogram zbiórki odpadów komunalnych na 2025 rok, zarządzaj subskrypcjami online." />
-        <meta name="keywords" content="zbiórka śmieci, powiadomienia e-mail, harmonogram odpadów, subskrypcja, śmieci 2025, zbiórka komunalna, odpady, ekologia" />
-        <meta name="author" content="Zespół Zbiorka" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta httpEquiv="content-language" content="pl" />
-        <meta name="revisit-after" content="7 days" />
-        <meta name="date" content="2025-09-28T17:53+02:00" /> {/* Aktualna data i czas CEST */}
-
-        {/* Open Graph (Facebook, LinkedIn itp.) */}
-        <meta property="og:title" content="Zbiórka odpadów komunalnych - Powiadomienia e-mail, Harmonogram 2025" />
-        <meta property="og:description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla swojej miejscowości lub ulicy. Harmonogram zbiórki odpadów komunalnych na 2025 rok." />
-        <meta property="og:url" content="https://zbiorka.vercel.app/" />
-        <meta property="og:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
-        <meta property="og:image:alt" content="Logo aplikacji Zbiorka - powiadomienia o zbiórce śmieci" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="pl_PL" />
-        <meta property="og:site_name" content="Zbiorka" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Zbiórka odpadów - Powiadomienia e-mail, Harmonogram 2025" />
-        <meta name="twitter:description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla swojej miejscowości lub ulicy. Harmonogram na 2025 rok." />
-        <meta name="twitter:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
-        <meta name="twitter:image:alt" content="Logo Zbiorka - aplikacja do powiadomień o śmieciach" />
-        <meta name="twitter:site" content="@ZbiorkaApp" /> {/* Jeśli masz konto Twitter, dostosuj */}
-
-        {/* Strukturalne dane JSON-LD (dla Google) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "Zbiorka",
-              "url": "https://zbiorka.vercel.app/",
-              "description": "Platforma do ustawiania darmowych powiadomień e-mail o zbiórce śmieci według harmonogramu odpadów komunalnych na 2025 rok.",
-              "publisher": {
-                "@type": "Organization",
-                "name": "Zbiorka",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://zbiorka.vercel.app/web-app-manifest-512x512.png"
-                }
-              },
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://zbiorka.vercel.app/subscribe?location={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            }),
-          }}
-        />
-      </Head>
-      <Main />
-    </>
+    <main className="container">
+      <u><h3 className="title">TrashAlert</h3></u>
+      <h4>Aplikacja TrashAlert umożliwia darmową subskrypcję powiadomień e-mail o zbiórkach odpadów komunalnych w konkretnej lokalizacji.</h4>
+      <p>Czy zdarza Ci się zapomnieć o dniu odbioru śmieci? A może zastanawiasz się, kiedy wystawić żółty worek na plastiki, a kiedy zielony na szkło?<br />Dzięki aplikacji <strong>TrashAlert</strong> możesz pożegnać się z harmonogramem wywozu odpadów komunalnych.<br />To proste, intuicyjne rozwiązanie - bez instalowania kolejnej aplikacji na Twoim telefonie - pomoże Ci zadbać o porządek w Twoim domu i otoczeniu.</p>
+      <br />
+      <h4>Obecna lista lokalizacji dla których można uzyskać powiadomienia o zbiórce:</h4>
+      <ul>
+        <li>gm. <b>Łagów</b> (26-025), pow. kielecki</li>
+        <li><b>Cedzyna</b> (25-351), pow. kielecki</li>
+        <li>gm. <b>Górno</b> (26-008), pow. kielecki</li>
+      </ul>
+      <br />
+      <h4>Dlaczego warto skorzystać z aplikacji TrashAlert?</h4>
+      <p>Żyjemy w czasach, gdy segregacja odpadów stała się obowiązekiem. Jednak śledzenie harmonogramów odbioru różnych frakcji – od zmieszanych odpadów komunalnych po zużyty sprzęt elektroniczny – może być uciążliwe. Nasza aplikacja powstała, by ułatwić Ci to zadanie.</p><br />
+      <h4>Oto, co zyskujesz:</h4>
+      <ul>
+        <li><strong>Spersonalizowane powiadomienia e-mail</strong> – dostaniesz przypomnienie dokładnie wtedy, gdy będzie Ci potrzebne, prosto na swoją skrzynkę.</li>
+        <li><strong>Rozróżnienie kategorii odpadów</strong> – zmieszane, tworzywa sztuczne, szkło, papier, bio, odpady wielkogabarytowe czy elektronika – każda frakcja ma swój harmonogram.</li>
+        <li><strong>Elastyczność</strong> – dostosuj aplikację do swoich potrzeb, wybierając miejscowość i kategorie odpadów, które Cię interesują.</li>
+      </ul>
+      <br />
+      <h4>Jak to działa?</h4>
+      <ol>
+        <li><strong>Ustaw powiadomienia dla wybranej lokalizacji</strong><br />Wpisz swój adres e-mail, kod pocztowy a następnie z rozwijanej listy wybierz swoją lokalizację.</li>
+        <li><strong>Otrzymuj przypomnienia</strong><br />W dniu zbiórki dostaniesz e-mail z informacją, np.: <br />„Przypomnienie!<br />
+          Zbiórka śmieci w 26-008 Radlin<br />
+          Dzisiaj 2025-09-16 odbywa się zbiórka śmieci:<br />
+          🟡 tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)<br />
+          🟢 szkło białe i kolorowe (worek zielony)<br />
+          🔵 papier, tektura (worek niebieski)<br />
+          Pamiętaj o wystawieniu pojemników!”</li>
+        <li><strong>Testuj i dostosuj</strong><br />Nie jesteś pewien, czy e-maile dotrą? Skorzystaj z testu, aby sprawdzić działanie powiadomień. Jeśli wiadomość wpadnie do spamu, oznacz ją jako „nie spam”.</li>
+      </ol>
+      <br />
+      <h4>Kategorie odpadów pod kontrolą</h4>
+      <p>Nasza aplikacja wspiera pełną segregację, obejmując wszystkie najważniejsze frakcje:</p>
+      <p><strong>🗑️ Zmieszane odpady komunalne</strong> – dla odpadów, które nie nadają się do recyklingu.</p>
+      <p><strong>🟡 Tworzywa sztuczne, metal, opakowania wielomateriałowe (worek żółty)</strong> – plastikowe butelki, puszki czy kartony po mleku.</p>
+      <p><strong>🟢 Szkło białe i kolorowe (worek zielony)</strong> – słoiki i butelki, które zyskują nowe życie.</p>
+      <p><strong>🔵 Papier, tektura (worek niebieski)</strong> – gazety, kartony i opakowania papierowe.</p>
+      <p><strong>🟤 Odpady biodegradowalne (worek brązowy)</strong> – resztki jedzenia i odpady organiczne.</p>
+      <p><strong>🪑 Odpady wielkogabarytowe</strong> – stare meble czy materace.</p>
+      <p><strong>📻 Zużyty sprzęt elektryczny i elektroniczny</strong> – od zepsutych lodówek po stare telefony.</p>
+      <p><strong>🚬popiół</strong> - popiół uzyskany ze spalania drewna lub węgla.</p>
+      <p>Dzięki subskrypcji wiadomości e-mail masz pewność, że każdy worek trafi na ulicę w odpowiednim czasie.</p>
+    </main>
   );
 }
