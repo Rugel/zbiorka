@@ -3,6 +3,7 @@ import Header from './modules/Header';
 import Navigation from './modules/Navigation';
 import Footer from './modules/Footer';
 import CookieConsent from './modules/CookieConsent';
+import Script from "next/script";
 
 export default function RootLayout({
   children,
@@ -61,6 +62,20 @@ export default function RootLayout({
           }}
         />
         <meta name="apple-mobile-web-app-title" content="TrashAlert" />
+        {/* Global site tag (gtag.js) - Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-YBE26T44NH`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-YBE26T44NH');
+          `}
+        </Script>
       </head>
       <body>
         <Navigation />
