@@ -84,7 +84,8 @@ h2 {
   font-size: 1.125rem;
   font-weight: 500;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 h3.title {
