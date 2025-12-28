@@ -57,7 +57,7 @@ export default function Navigation() {
 
   const navStyles = {
     nav: {
-      backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.3)',
+      backgroundColor: isScrolled ? 'rgba(240, 253, 244, 0.9)' : 'rgba(240, 253, 244, 0.4)',
       backdropFilter: 'blur(16px)',
       WebkitBackdropFilter: 'blur(16px)',
       borderBottom: isScrolled ? '1px solid rgba(226, 232, 240, 0.8)' : '1px solid transparent',
