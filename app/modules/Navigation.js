@@ -148,8 +148,10 @@ export default function Navigation() {
       flexDirection: 'column',
       gap: '0.5rem',
       transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
-      transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+      transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s',
       zIndex: 1000,
+      visibility: isOpen ? 'visible' : 'hidden',
+      pointerEvents: isOpen ? 'auto' : 'none',
     },
     mobileMenuItem: {
       padding: '0.875rem 1.25rem',
