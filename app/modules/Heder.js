@@ -2,9 +2,9 @@ const Header = () => {
     return (
         <header className='header'>
             <h1>
-                Zbiórka odpadów komunalnych – ustaw powiadomienia e-mail
+                TrashAlert
             </h1>
-            <h2>zasubskrybuj i zapomnij o harmonogramie</h2>
+            <h2>Zadbaj o porządek z powiadomieniami e-mail</h2>
         </header>
     )
 }

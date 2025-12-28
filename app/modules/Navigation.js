@@ -4,235 +4,249 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
-// Ikony jako komponenty (zamiennik lucide-react)
 const MenuIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="4">
-    <line x1="6" y1="12" x2="42" y2="12"></line>
-    <line x1="6" y1="24" x2="42" y2="24"></line>
-    <line x1="6" y1="36" x2="42" y2="36"></line>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
   </svg>
 );
 
 const CloseIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="4">
-    <line x1="36" y1="12" x2="12" y2="36"></line>
-    <line x1="12" y1="12" x2="36" y2="36"></line>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
   </svg>
 );
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   const menuItems = [
-    { id: 'home', label: 'HOME', href: '/' },
-    { id: 'about', label: 'SUBSKRYPCJA', href: '/subscribe' },
-    { id: 'services', label: 'ANULOWANIE', href: '/unsubscribe' },
-    { id: 'contact', label: 'KONTAKT', href: '/contact' }
+    { id: 'home', label: 'Home', href: '/' },
+    { id: 'subscribe', label: 'Subskrypcja', href: '/subscribe' },
+    { id: 'unsubscribe', label: 'Anulowanie', href: '/unsubscribe' },
+    { id: 'contact', label: 'Kontakt', href: '/contact' }
   ];
 
-  // Sprawdź który element jest aktywny na podstawie aktualnej ścieżki
   const getActiveItem = () => {
     const activeItem = menuItems.find(item => item.href === pathname);
-    return activeItem ? activeItem.id : 'home';
+    return activeItem ? activeItem.id : (pathname === '/' ? 'home' : '');
   };
 
   useEffect(() => {
     setIsMounted(true);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  // Close mobile menu when navigating
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
-  const styles = {
+  if (!isMounted) return null;
+
+  const activeItemId = getActiveItem();
+
+  const navStyles = {
     nav: {
-      backgroundColor: '#3C8500',
-      boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
-      borderBottom: '1px solid #e5e7eb'
+      backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.3)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
+      borderBottom: isScrolled ? '1px solid rgba(226, 232, 240, 0.8)' : '1px solid transparent',
+      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+      position: 'sticky',
+      top: 0,
+      zIndex: 1000,
+      width: '100%',
     },
     container: {
-      maxWidth: '1380px',
+      maxWidth: '1200px',
       margin: '0 auto',
-      padding: '0 1rem',
-    },
-    navbar: {
+      padding: '0 1.5rem',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: '8rem'
+      height: isScrolled ? '4rem' : '5rem',
+      transition: 'height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    },
+    logoContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      transition: 'transform 0.3s ease',
+      transform: isScrolled ? 'scale(0.9)' : 'scale(1)',
     },
     desktopMenu: {
       display: 'flex',
       alignItems: 'center',
-      gap: '3vw',
+      gap: '0.5rem',
+      backgroundColor: 'rgba(241, 245, 249, 0.5)',
+      padding: '0.25rem',
+      borderRadius: '9999px',
+      border: '1px solid rgba(226, 232, 240, 0.5)',
     },
     menuItem: {
-      position: 'relative',
-      padding: '0.5rem 0.75rem',
-      fontSize: '1.2rem',
+      padding: '0.5rem 1.25rem',
+      fontSize: '0.875rem',
       fontWeight: '600',
       textDecoration: 'none',
-      color: '#ffffff',
-      cursor: 'pointer',
-      textShadow: '0 2px 8px rgba(0, 0, 0, 1)'
+      color: '#64748b',
+      borderRadius: '9999px',
+      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+      position: 'relative',
     },
-    activeIndicator: {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: '2px',
-      backgroundColor: '#ffffff',
-      borderRadius: '9999px'
+    activeMenuItem: {
+      color: '#fff',
+      backgroundColor: '#3c8500',
+      boxShadow: '0 4px 6px -1px rgba(60, 133, 0, 0.2), 0 2px 4px -1px rgba(60, 133, 0, 0.1)',
     },
-    mobileButton: {
-      fontSize: '1.5rem',
-      display: 'inline-flex',
+    mobileToggle: {
+      display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '0.5rem',
-      borderRadius: '0.375rem',
-      color: '#ffffff',
-      backgroundColor: 'transparent',
-      border: 'none',
+      width: '44px',
+      height: '44px',
+      borderRadius: '12px',
+      color: '#1e293b',
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+      border: '1px solid rgba(203, 213, 225, 0.8)',
       cursor: 'pointer',
-      transition: 'all 0.2s'
+      transition: 'all 0.2s',
+      zIndex: 1001,
+      padding: 0,
+    },
+    mobileOverlay: {
+      position: 'fixed',
+      inset: 0,
+      backgroundColor: 'rgba(15, 23, 42, 0.2)',
+      backdropFilter: 'blur(8px)',
+      WebkitBackdropFilter: 'blur(8px)',
+      opacity: isOpen ? 1 : 0,
+      visibility: isOpen ? 'visible' : 'hidden',
+      transition: 'all 0.4s ease',
+      zIndex: 1000,
     },
     mobileMenu: {
-      transition: 'all 0.3s ease-in-out',
-      overflow: 'hidden',
-      backgroundColor: '#ffffff',
-      borderTop: '1px solid #e5e7eb'
-    },
-    mobileMenuContent: {
-      padding: '0.5rem',
+      position: 'fixed',
+      top: '0',
+      right: '0',
+      width: '80%',
+      maxWidth: '300px',
+      height: '100vh',
+      backgroundColor: '#fff',
+      boxShadow: '-10px 0 25px -5px rgba(0, 0, 0, 0.1)',
+      padding: '5rem 1.5rem 1.5rem',
       display: 'flex',
       flexDirection: 'column',
-      gap: '0.25rem',
-      alignItems: 'center'
+      gap: '0.5rem',
+      transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
+      transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+      zIndex: 1000,
     },
     mobileMenuItem: {
-      display: 'block',
-      padding: '.5rem 0.75rem',
-      borderRadius: '0.375rem',
-      fontSize: '1.2rem',
+      padding: '0.875rem 1.25rem',
+      borderRadius: '12px',
+      fontSize: '1rem',
       fontWeight: '600',
       textDecoration: 'none',
+      color: '#475569',
       transition: 'all 0.2s',
-      color: 'black',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.75rem',
     },
     activeMobileMenuItem: {
-      color: '#2563eb',
-      backgroundColor: '#eeeeee'
+      color: '#3c8500',
+      backgroundColor: 'rgba(60, 133, 0, 0.05)',
+      border: '1px solid rgba(60, 133, 0, 0.1)',
     }
   };
 
-  // Nie renderuj niczego dopóki komponent nie jest zamontowany (hydration safety)
-  if (!isMounted) {
-    return null;
-  }
-
-  const activeItemId = getActiveItem();
-
   return (
-    <nav style={styles.nav}>
-      <div style={styles.container}>
-        <div style={styles.navbar}>
-          {/* Logo */}
-          <div className='logo'>
-            <Link href="/" title="Przejdź na stronę główną"><Image src={'/logo.png'} alt='Logo' width={200} height={110} /></Link>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="desktop-menu" style={styles.desktopMenu}>
-            {menuItems.map((item) => (
-              <Link
-                key={item.id}
-                href={item.href}
-                style={{
-                  ...styles.menuItem,
-                  ...(activeItemId === item.id ? styles.activeMenuItem : {})
-                }}
-              >
-                {item.label}
-                {activeItemId === item.id && (
-                  <span style={styles.activeIndicator}></span>
-                )}
-              </Link>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="mobile-button">
-            <button
-              onClick={toggleMenu}
-              style={styles.mobileButton}
-              onMouseEnter={(e) => {
-                e.target.style.color = '#111827';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'transparent';
-                e.target.style.color = '#374151';
-              }}
-            >
-              {isOpen ? <CloseIcon /> : <MenuIcon />}
-            </button>
-          </div>
+    <nav style={navStyles.nav}>
+      <div style={navStyles.container}>
+        <div style={navStyles.logoContainer}>
+          <Link href="/" title="TrashAlert Home">
+            <Image
+              src='/logo.png'
+              alt='TrashAlert Logo'
+              width={120}
+              height={60}
+              style={{ objectFit: 'contain', mixBlendMode: 'multiply' }}
+              priority
+            />
+          </Link>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <div style={{
-        ...styles.mobileMenu,
-        maxHeight: isOpen ? '16rem' : '0',
-        opacity: isOpen ? '1' : '0'
-      }}>
-        <div style={styles.mobileMenuContent}>
+        {/* Desktop Menu */}
+        <div className="desktop-nav" style={navStyles.desktopMenu}>
           {menuItems.map((item) => (
             <Link
               key={item.id}
               href={item.href}
-              onClick={() => setIsOpen(false)} // Zamknij menu po kliknięciu
               style={{
-                ...styles.mobileMenuItem,
-                ...(activeItemId === item.id ? styles.activeMobileMenuItem : {})
+                ...navStyles.menuItem,
+                ...(activeItemId === item.id ? navStyles.activeMenuItem : {})
               }}
-              onMouseEnter={(e) => {
-                if (activeItemId !== item.id) {
-                  e.target.style.backgroundColor = '#f9fafb';
-                  e.target.style.color = '#111827';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeItemId !== item.id) {
-                  e.target.style.backgroundColor = 'transparent';
-                  e.target.style.color = '#374151';
-                }
-              }}
+              className="nav-link"
             >
               {item.label}
             </Link>
           ))}
         </div>
+
+        {/* Mobile menu toggle */}
+        <button
+          className="mobile-toggle"
+          onClick={() => setIsOpen(!isOpen)}
+          style={navStyles.mobileToggle}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+        >
+          {isOpen ? <CloseIcon /> : <MenuIcon />}
+        </button>
       </div>
 
-      {/* Media Query dla responsywności */}
+      {/* Mobile Menu Overlay & Drawer */}
+      <div
+        style={navStyles.mobileOverlay}
+        onClick={() => setIsOpen(false)}
+        aria-hidden="true"
+      />
+      <div style={navStyles.mobileMenu}>
+        {menuItems.map((item) => (
+          <Link
+            key={item.id}
+            href={item.href}
+            style={{
+              ...navStyles.mobileMenuItem,
+              ...(activeItemId === item.id ? navStyles.activeMobileMenuItem : {})
+            }}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
+
       <style jsx>{`
+        .nav-link:hover:not(.active) {
+          color: #1e293b;
+          background-color: rgba(255, 255, 255, 0.8);
+        }
         @media (min-width: 768px) {
-          .desktop-menu {
-            display: flex !important;
-          }
-          .mobile-button {
-            display: none !important;
-          }
+          .desktop-nav { display: flex !important; }
+          .mobile-toggle { display: none !important; }
         }
         @media (max-width: 767px) {
-          .desktop-menu {
-            display: none !important;
-          }
-          .mobile-button {
-            display: block !important;
-          }
+          .desktop-nav { display: none !important; }
+          .mobile-toggle { display: flex !important; }
         }
       `}</style>
     </nav>

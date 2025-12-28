@@ -94,27 +94,29 @@ export default function Unsubscribe() {
   }, [postalCode]);
 
   return (
-    <main className="container">
-      <u><h3 className="title">Anuluj subskrypcję</h3></u>
+    <main>
+      <h3 className="title">Anuluj subskrypcję</h3>
       <p className="description">
-        <b>Wypełnij poniższe pola, aby anulować subskrypcję a następnie potwierdź akcję w otrzymanej wiadomości e-mail klikając w odpowiedni link.</b>
+        Wypełnij poniższe pola, aby zrezygnować z powiadomień. Akcja ta musi zostać potwierdzona poprzez link wysłany na Twój adres e-mail.
       </p>
+
       <form className="form">
-        <div className="form-group"> 
+        <div className="form-group">
           <label htmlFor="email" className="label">
-            E-mail
+            Adres e-mail
           </label>
           <input
             type="email"
             id="email"
             name="email"
-            placeholder='np. "nowak@przyklad.com"'
+            placeholder='Twój e-mail'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="input"
             required
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="postalCode" className="label">
             Kod pocztowy
@@ -123,16 +125,17 @@ export default function Unsubscribe() {
             type="text"
             id="postalCode"
             name="postalCode"
-            placeholder='np. "26-038"'
+            placeholder='np. 26-038'
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
             className="input"
             required
           />
         </div>
+
         <div className="form-group">
           <label htmlFor="location" className="label">
-            Ulica i miejscowość
+            Miejscowość i ulica
           </label>
           <select
             id="location"
@@ -143,7 +146,7 @@ export default function Unsubscribe() {
             required
           >
             <option value="" disabled>
-              wybierz lokalizację
+              Wybierz swoją lokalizację
             </option>
             {suggestions.map((suggestion, index) => (
               <option key={index} value={suggestion}>
@@ -152,10 +155,12 @@ export default function Unsubscribe() {
             ))}
           </select>
         </div>
+
         <button type="button" onClick={handleUnsubscribe} className="button">
-          Anuluj subskrypcję
+          Wyślij link do dezaktywacji
         </button>
       </form>
+
       {status && <p className="status">{status}</p>}
     </main>
   );

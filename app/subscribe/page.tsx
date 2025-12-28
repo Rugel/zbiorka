@@ -173,15 +173,16 @@ export default function Subscribe() {
         <meta name="twitter:description" content="Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy. Dodaj harmonogram zbiórki odpadów komunalnych." />
         <meta name="twitter:image" content="https://zbiorka.vercel.app/web-app-manifest-512x512.png" />
       </Head>
-      <main className="container">
-        <u><h3 className="title">Subskrypcja powiadomień e-mail</h3></u>
+      <main>
+        <h3 className="title">Zasubskrybuj i zapomnij</h3>
         <p className="description">
-          <b>Wypełnij poniższe pola, aby aktywować subskrypcję a następnie potwierdź akcję w otrzymanej wiadomości e-mail klikając w odpowiedni link.</b>
+          Wypełnij poniższe pola, aby aktywować powiadomienia. Po wysłaniu formularza otrzymasz wiadomość z linkiem do potwierdzenia subskrypcji.
         </p>
+
         <form onSubmit={handleSubscribe} className="form">
           <div className="form-group">
             <label htmlFor="email" className="label">
-              E-mail
+              Adres e-mail
             </label>
             <input
               type="email"
@@ -194,6 +195,7 @@ export default function Subscribe() {
               required
             />
           </div>
+
           <div className="form-group">
             <label htmlFor="postalCode" className="label">
               Kod pocztowy
@@ -202,16 +204,17 @@ export default function Subscribe() {
               type="text"
               id="postalCode"
               name="postalCode"
-              placeholder='np. "26-038"'
+              placeholder='np. 26-038'
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
               className="input"
               required
             />
           </div>
+
           <div className="form-group">
             <label htmlFor="location" className="label">
-              Ulica i miejscowość
+              Miejscowość i ulica
             </label>
             <select
               id="location"
@@ -222,7 +225,7 @@ export default function Subscribe() {
               required
             >
               <option value="" disabled>
-                wybierz lokalizację
+                Wybierz swoją lokalizację
               </option>
               {suggestions.map((suggestion, index) => (
                 <option key={index} value={suggestion}>
@@ -231,20 +234,32 @@ export default function Subscribe() {
               ))}
             </select>
           </div>
+
           <button type="submit" className="button">
-            Subskrybuj
+            Aktywuj subskrypcję
           </button>
         </form>
+
         <div className="test">
-          <p className="description"><b>Przetestuj wysyłkę e-mail.</b></p>
-          <p className="description">
-            Wpisz swój adres e-mail w pierwsze pole formularza i wykonaj test wysyłki powiadomienia. Po skorzystaniu z tej opcji powinieneś dostać e-mail z informacją. Jeśli e-mail nie dotarł, sprawdź folder SPAM i <b>oznacz wiadomość jako &quot;nie spam&quot;</b>.
-          </p>
-          <button type="button" onClick={testEmail} className="button">
-            Test
+          <h4>🧪 Sprawdź działanie</h4>
+          <p>Chcesz mieć pewność, że wszystko działa? Wpisz e-mail powyżej i kliknij przycisk testowy. Jeśli e-mail nie dotrze w ciągu kilku minut, sprawdź folder SPAM.</p>
+          <button type="button" onClick={testEmail} className="button secondary">
+            Wyślij e-mail testowy
           </button>
         </div>
+
         {status && <p className="status">{status}</p>}
+
+        <style jsx>{`
+          .button.secondary {
+            background: var(--bg-main);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+          }
+          .button.secondary:hover {
+            background: #eee;
+          }
+        `}</style>
       </main>
     </>
   );

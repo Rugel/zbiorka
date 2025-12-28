@@ -29,18 +29,13 @@ export default function ContactPage() {
     };
 
     return (
-        <main className="container"
-        >
-            <u><h3 className="title">
-                Kontakt
-            </h3></u>
-            <p><b>Masz jakieś pytania lub sugestie, skontaktuj się z autorem projektu.</b></p><br />
-            <form
-                onSubmit={handleSubmit}
-                style={{ display: "flex", flexDirection: "column", gap: "16px" }}
-            >
-                <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                    <label htmlFor="name" style={{ fontWeight: 500 }}>
+        <main>
+            <h3 className="title">Kontakt</h3>
+            <p>Masz pytania lub sugestie? Chętnie poznamy Twoją opinię na temat projektu TrashAlert.</p>
+
+            <form onSubmit={handleSubmit} className="form">
+                <div className="form-group">
+                    <label htmlFor="name" className="label">
                         Imię i nazwisko
                     </label>
                     <input
@@ -48,47 +43,46 @@ export default function ContactPage() {
                         type="text"
                         id="name"
                         name="name"
+                        placeholder="Jak się nazywasz?"
                         required
                     />
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                    <label htmlFor="email" style={{ fontWeight: 500 }}>
-                        E-mail
+
+                <div className="form-group">
+                    <label htmlFor="email" className="label">
+                        Adres e-mail
                     </label>
                     <input
                         className="input"
                         type="email"
                         id="email"
                         name="email"
+                        placeholder="Twój adres e-mail"
                         required
                     />
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                    <label htmlFor="message" style={{ fontWeight: 500 }}>
+
+                <div className="form-group">
+                    <label htmlFor="message" className="label">
                         Wiadomość
                     </label>
                     <textarea
                         id="message"
                         name="message"
+                        className="input"
+                        placeholder="W czym możemy pomóc?"
                         rows={5}
                         required
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="button"
-                    onMouseOver={(e) =>
-                        (e.currentTarget.style.background = "#1e40af")
-                    }
-                    onMouseOut={(e) =>
-                        (e.currentTarget.style.background = "#2563eb")
-                    }
-                >
-                    Wyślij
+
+                <button type="submit" className="button">
+                    Wyślij wiadomość
                 </button>
             </form>
+
             {status && (
-                <p style={{ marginTop: "16px", fontWeight: 500 }}>{status}</p>
+                <p className="status">{status}</p>
             )}
         </main>
     );
