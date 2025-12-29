@@ -57,7 +57,7 @@ export default function Navigation() {
 
   const navStyles = {
     nav: {
-      backgroundColor: isScrolled ? 'rgba(240, 253, 244, 0.9)' : 'rgba(240, 253, 244, 0.4)',
+      backgroundColor: isScrolled ? 'rgba(240, 253, 244, 0.98)' : 'rgba(240, 253, 244, 0.85)',
       backdropFilter: 'blur(16px)',
       WebkitBackdropFilter: 'blur(16px)',
       borderBottom: isScrolled ? '1px solid rgba(226, 232, 240, 0.8)' : '1px solid transparent',
@@ -74,7 +74,7 @@ export default function Navigation() {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: isScrolled ? '4rem' : '5rem',
+      height: isScrolled ? '5.5rem' : '7rem',
       transition: 'height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
     },
     logoContainer: {
@@ -143,7 +143,7 @@ export default function Navigation() {
       height: '100vh',
       backgroundColor: '#fff',
       boxShadow: '-10px 0 25px -5px rgba(0, 0, 0, 0.1)',
-      padding: '5rem 1.5rem 1.5rem',
+      padding: '7rem 1.5rem 1.5rem',
       display: 'flex',
       flexDirection: 'column',
       gap: '0.5rem',
@@ -180,8 +180,8 @@ export default function Navigation() {
             <Image
               src='/logo.png'
               alt='TrashAlert Logo'
-              width={120}
-              height={60}
+              width={180}
+              height={90}
               style={{ objectFit: 'contain', mixBlendMode: 'multiply' }}
               priority
             />
