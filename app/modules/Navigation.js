@@ -40,7 +40,11 @@ export default function Navigation() {
   useEffect(() => {
     setIsMounted(true);
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      if (window.scrollY > 40) {
+        setIsScrolled(true);
+      } else if (window.scrollY < 20) {
+        setIsScrolled(false);
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
