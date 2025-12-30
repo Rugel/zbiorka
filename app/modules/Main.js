@@ -1,3 +1,5 @@
+"use client";
+
 const Main = () =>
     <main>
         <h3 className="title">O aplikacji</h3>
