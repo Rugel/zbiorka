@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import SubscribeForm from '../modules/SubscribeForm';
 
 export const metadata: Metadata = {
-  title: "Zbiórka odpadów - ustawienie powiadomień e-mail - harmonogram",
-  description: "Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy. Dodaj harmonogram zbiórki odpadów komunalnych.",
+  title: "Harmonogram wywozu śmieci - powiadomienia e-mail - Łagów",
+  description: "Ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy. Harmonogram zbiórki odpadów komunalnych dla Łagów, Górno, Cedzyna.",
   openGraph: {
-    title: "Zbiórka odpadów komunalnych - ustawienie powiadomień e-mail - harmonogram",
-    description: "Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla Twojej miejscowości lub ulicy. Dodaj harmonogram zbiórki odpadów komunalnych.",
+    title: "Harmonogram wywozu śmieci - powiadomienia e-mail - Łagów",
+    description: "Ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy. Harmonogram zbiórki odpadów komunalnych dla Łagów, Górno, Cedzyna.",
     url: "https://zbiorka.vercel.app/",
     images: ["https://zbiorka.vercel.app/web-app-manifest-512x512.png"],
   },

@@ -11,7 +11,7 @@ export async function POST(request: Request) {
 
     const subject = 'Test powiadomienia o zbiórce odpadów';
     const text = 'To jest testowy e-mail z aplikacji TrashAlert.';
-    const info = 'Dobra wiadomość! Możesz zasubskrybować powiadomienia.'
+    const info = 'Dobra wiadomość - możesz zasubskrybować powiadomienia!'
 
     await sendEmail(to, subject, text, info);
 
