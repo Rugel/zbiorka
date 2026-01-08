@@ -8,7 +8,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "Harmonogram wywozu śmieci - powiadomienia e-mail - Łagów",
-  description: "Ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy. Harmonogram zbiórki odpadów komunalnych dla Łagów, Górno, Cedzyna.",
+  description: "Łagów, Górno, Cedzyna - ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy.",
   keywords: "zbiórka śmieci, powiadomienia e-mail, Łagów, Górno, Cedzyna, harmonogram odpadów, subskrypcja, śmieci 2025, zbiórka komunalna, odpady, ekologia",
   authors: [{ name: "Zespół Zbiorka" }],
   robots: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Harmonogram wywozu śmieci - powiadomienia e-mail - Łagów",
-    description: "Ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy. Harmonogram zbiórki odpadów komunalnych dla Łagów, Górno, Cedzyna.",
+    description: "Łagów, Górno, Cedzyna - ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy.",
     url: "https://zbiorka.vercel.app/",
     siteName: "Zbiorka",
     images: [
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zbiórka odpadów - Powiadomienia e-mail, Harmonogram 2025",
-    description: "Ustaw darmowe powiadomienia e-mail o zbiórce śmieci dla swojej miejscowości lub ulicy. Harmonogram na 2025 rok.",
+    title: "Harmonogram wywozu śmieci - powiadomienia e-mail - Łagów",
+    description: "Łagów, Górno, Cedzyna - ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy.",
     images: {
       url: "https://zbiorka.vercel.app/web-app-manifest-512x512.png",
       alt: "Logo Zbiorka - aplikacja do powiadomień o śmieciach",
@@ -54,7 +54,7 @@ export default function Home() {
     "@type": "WebSite",
     "name": "Zbiorka",
     "url": "https://zbiorka.vercel.app/",
-    "description": "Platforma do ustawiania darmowych powiadomień e-mail o zbiórce śmieci według harmonogramu odpadów komunalnych na 2025 rok.",
+    "description": "Łagów, Górno, Cedzyna - ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy.",
     "publisher": {
       "@type": "Organization",
       "name": "Zbiorka",
