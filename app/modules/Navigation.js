@@ -74,7 +74,7 @@ export default function Navigation() {
     container: {
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: '0 1.5rem',
+      padding: '0 0.75rem',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',

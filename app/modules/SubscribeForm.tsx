@@ -186,7 +186,7 @@ export default function SubscribeForm() {
                     </button>
                 </form>
                 <p className="spam-notice">
-                    <strong>WAŻNE:</strong> Jeśli e-mail nie dotrze w ciągu kilku minut, sprawdź folder <strong>SPAM</strong>. Pamiętaj, aby oznaczyć go jako „To nie jest spam”, aby kolejne powiadomienia trafiały bezpośrednio do Twojej skrzynki odbiorczej.
+                    <strong>WAŻNE:</strong> Jeśli e-mail nie dotrze w ciągu kilku minut, sprawdź folder <b>SPAM</b>. Pamiętaj, aby oznaczyć wiadomość jako „To nie jest spam”, aby kolejne powiadomienia trafiały bezpośrednio do Twojej skrzynki odbiorczej.
                 </p>
             </div>
 
@@ -306,6 +306,9 @@ export default function SubscribeForm() {
                     background: #eee;
                 }
                 @media (max-width: 600px) {
+                    .test-section {
+                        padding: 1rem;
+                    }
                     .form-test {
                         flex-direction: column;
                     }

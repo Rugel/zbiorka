@@ -72,7 +72,7 @@ main {
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 800;
   color: var(--primary-dark);
   margin-bottom: 0.5rem;
@@ -81,7 +81,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--text-muted);
   margin-left: 2rem;
@@ -276,11 +276,16 @@ nav {
 
   .container,
   main {
-    margin: 1rem;
-    padding: 1.5rem;
+    margin: 0.5rem;
+    padding: 1rem;
   }
 
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
