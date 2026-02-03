@@ -1,8 +1,21 @@
+.cookie-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease-out;
+}
+
 .cookie-banner {
   position: fixed;
-  bottom: 2rem;
+  bottom: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 50%);
   width: calc(100% - 2rem);
   max-width: 600px;
   background: var(--bg-card);
@@ -11,7 +24,7 @@
   color: var(--text-main);
   padding: 1.5rem;
   border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
   border: 1px solid var(--glass-border);
   display: flex;
   align-items: center;
@@ -19,7 +32,7 @@
   gap: 1.5rem;
   font-size: 0.9rem;
   z-index: 9999;
-  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: modalScale 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cookie-banner p {
@@ -44,15 +57,25 @@
   color: var(--primary-light);
 }
 
-@keyframes slideUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translate(-50%, 20px);
   }
 
   to {
     opacity: 1;
-    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes modalScale {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 40%) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 50%) scale(1);
   }
 }
 
@@ -60,7 +83,8 @@
   .cookie-banner {
     flex-direction: column;
     text-align: center;
-    bottom: 1rem;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
     gap: 1rem;
   }
 

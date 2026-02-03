@@ -7,8 +7,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Harmonogram wywozu śmieci - powiadomienia e-mail - Łagów",
-  description: "Łagów, Górno, Cedzyna - ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy.",
+  title: "Łagów Harmonogram Wywozu Śmieci 2026 | Powiadomienia TrashAlert",
+  description: "Sprawdź aktualny harmonogram wywozu śmieci dla gminy Łagów. Zamów darmowe powiadomienia e-mail o terminach odbioru odpadów z aplikacją TrashAlert.",
   keywords: "zbiórka śmieci, powiadomienia e-mail, Łagów, Górno, Cedzyna, harmonogram odpadów, subskrypcja, śmieci 2025, zbiórka komunalna, odpady, ekologia",
   authors: [{ name: "Zespół Zbiorka" }],
   robots: {
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Harmonogram wywozu śmieci - powiadomienia e-mail - Łagów",
-    description: "Łagów, Górno, Cedzyna - ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy.",
+    title: "Łagów Harmonogram Wywozu Śmieci 2026 | Powiadomienia TrashAlert",
+    description: "Sprawdź aktualny harmonogram wywozu śmieci dla gminy Łagów. Zamów darmowe powiadomienia e-mail o terminach odbioru odpadów z aplikacją TrashAlert.",
     url: "https://zbiorka.vercel.app/",
     siteName: "Zbiorka",
     images: [
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Harmonogram wywozu śmieci - powiadomienia e-mail - Łagów",
-    description: "Łagów, Górno, Cedzyna - ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy.",
+    title: "Łagów Harmonogram Wywozu Śmieci 2026 | Powiadomienia TrashAlert",
+    description: "Sprawdź aktualny harmonogram wywozu śmieci dla gminy Łagów. Zamów darmowe powiadomienia e-mail o terminach odbioru odpadów z aplikacją TrashAlert.",
     images: {
       url: "https://zbiorka.vercel.app/web-app-manifest-512x512.png",
       alt: "Logo Zbiorka - aplikacja do powiadomień o śmieciach",
@@ -54,7 +54,7 @@ export default function Home() {
     "@type": "WebSite",
     "name": "Zbiorka",
     "url": "https://zbiorka.vercel.app/",
-    "description": "Łagów, Górno, Cedzyna - ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy.",
+    "description": "Sprawdź aktualny harmonogram wywozu śmieci dla gminy Łagów. Zamów darmowe powiadomienia e-mail o terminach odbioru odpadów z aplikacją TrashAlert.",
     "publisher": {
       "@type": "Organization",
       "name": "Zbiorka",
@@ -65,9 +65,34 @@ export default function Home() {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://zbiorka.vercel.app/subscribe?location={search_term_string}",
       "query-input": "required name=search_term_string"
-    }
+    },
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Jak działa aplikacja TrashAlert?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TrashAlert wysyła powiadomienia e-mail o terminach odbioru odpadów komunalnych dla Twojej lokalizacji. Wystarczy podać adres e-mail, kod pocztowy i wybrać miejscowość."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy korzystanie z powiadomień jest płatne?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nie, usługa TrashAlert jest całkowicie darmowa dla mieszkańców obsługiwanych gmin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jakie miejscowości są obsługiwane?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Obecnie obsługujemy gminę Łagów, Górno oraz Cedzynę. Planujemy rozszerzenie bazy o kolejne lokalizacje."
+        }
+      }
+    ]
   };
 
   return (

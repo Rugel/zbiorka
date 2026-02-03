@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 export default function SubscribeForm() {
     const [email, setEmail] = useState<string>('');
+    const [testEmailAddress, setTestEmailAddress] = useState<string>('');
     const [location, setLocation] = useState<string>('');
     const [postalCode, setPostalCode] = useState<string>('');
     const [status, setStatus] = useState<string | null>(null);
@@ -87,7 +88,7 @@ export default function SubscribeForm() {
             Swal.fire({
                 icon: 'success',
                 title: 'Sukces!',
-                text: data.message || 'Subskrypcja dodana pomyślnie.',
+                text: data.message || 'Subskrypcja dodana pomyślnie. Sprawdź e-mail, aby potwierdzić.',
                 confirmButtonText: 'OK',
             });
         } catch (error) {
@@ -101,9 +102,11 @@ export default function SubscribeForm() {
         }
     };
 
-    const testEmail = async () => {
-        if (!email) {
-            setStatus('❌ Proszę podać adres e-mail.');
+    const handleTestEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!testEmailAddress) {
+            setStatus('❌ Proszę podać adres e-mail do testu.');
             Swal.fire({
                 icon: 'error',
                 title: 'Błąd!',
@@ -117,7 +120,7 @@ export default function SubscribeForm() {
             const res = await fetch('/api/email-test', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ to: email }),
+                body: JSON.stringify({ to: testEmailAddress }),
             });
 
             const data = await res.json();
@@ -162,6 +165,33 @@ export default function SubscribeForm() {
 
     return (
         <main>
+            <div className="test-section">
+                <h4>🧪 Testowanie powiadomień</h4>
+                <p className="description">
+                    Chcesz mieć pewność, że wszystko działa? Wpisz e-mail poniżej i wyślij wiadomość testową.
+                </p>
+                <form onSubmit={handleTestEmail} className="form-test">
+                    <div className="form-group">
+                        <input
+                            type="email"
+                            placeholder="Adres e-mail do testu"
+                            value={testEmailAddress}
+                            onChange={(e) => setTestEmailAddress(e.target.value)}
+                            className="input"
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="button secondary">
+                        Wyślij e-mail testowy
+                    </button>
+                </form>
+                <p className="spam-notice">
+                    <strong>WAŻNE:</strong> Jeśli e-mail nie dotrze w ciągu kilku minut, sprawdź folder <strong>SPAM</strong>. Pamiętaj, aby oznaczyć go jako „To nie jest spam”, aby kolejne powiadomienia trafiały bezpośrednio do Twojej skrzynki odbiorczej.
+                </p>
+            </div>
+
+            <hr className="divider" />
+
             <h3 className="title">Zasubskrybuj i zapomnij</h3>
             <p className="description">
                 Wypełnij poniższe pola, aby aktywować powiadomienia. Po wysłaniu formularza otrzymasz wiadomość z linkiem do potwierdzenia subskrypcji.
@@ -228,26 +258,62 @@ export default function SubscribeForm() {
                 </button>
             </form>
 
-            <div className="test">
-                <h4>🧪 Sprawdź działanie</h4>
-                <p>Chcesz mieć pewność, że wszystko działa? Wpisz e-mail powyżej i kliknij przycisk testowy. Jeśli e-mail nie dotrze w ciągu kilku minut, sprawdź folder SPAM.</p>
-                <button type="button" onClick={testEmail} className="button secondary">
-                    Wyślij e-mail testowy
-                </button>
-            </div>
-
             {status && <p className="status">{status}</p>}
 
             <style jsx>{`
-        .button.secondary {
-          background: var(--bg-main);
-          color: var(--text-main);
-          border: 1px solid var(--border);
-        }
-        .button.secondary:hover {
-          background: #eee;
-        }
-      `}</style>
+                .test-section {
+                    background: var(--bg-card);
+                    padding: 1.5rem;
+                    border-radius: 8px;
+                    border: 1px solid var(--border);
+                    margin-bottom: 2rem;
+                }
+                .test-section h4 {
+                    margin-top: 0;
+                    margin-bottom: 0.5rem;
+                }
+                .form-test {
+                    display: flex;
+                    gap: 1rem;
+                    margin-top: 1rem;
+                }
+                .form-test .form-group {
+                    flex: 1;
+                    margin-bottom: 0;
+                }
+                .spam-notice {
+                    font-size: 0.85rem;
+                    color: var(--text-muted);
+                    margin-top: 1rem;
+                    padding: 0.75rem;
+                    background: rgba(0, 0, 0, 0.05);
+                    border-radius: 4px;
+                    border-left: 4px solid #ff9800;
+                }
+                .divider {
+                    border: 0;
+                    border-top: 1px solid var(--border);
+                    margin: 2rem 0;
+                }
+                .button.secondary {
+                    background: var(--bg-main);
+                    color: var(--text-main);
+                    border: 1px solid var(--border);
+                    width: auto;
+                    white-space: nowrap;
+                }
+                .button.secondary:hover {
+                    background: #eee;
+                }
+                @media (max-width: 600px) {
+                    .form-test {
+                        flex-direction: column;
+                    }
+                    .button.secondary {
+                        width: 100%;
+                    }
+                }
+            `}</style>
         </main>
     );
 }
