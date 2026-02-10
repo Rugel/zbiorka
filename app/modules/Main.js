@@ -9,9 +9,9 @@ const Main = () =>
         <h4>📍 Obsługiwane lokalizacje</h4>
         <p>Obecnie wspieramy powiadomienia dla następujących obszarów:</p>
         <ul className="locations-list">
-            <li>gm. <strong>Łagów</strong> (26-025), pow. kielecki</li>
-            <li><strong>Cedzyna</strong> (25-351), pow. kielecki</li>
-            <li>gm. <strong>Górno</strong> (26-008), pow. kielecki</li>
+            <li><a href="https://www.lagowgmina.pl/asp/core/pdf.asp?menu=108&akcja=&artykul=0" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'underline', fontWeight: 'bold' }}>gm. Łagów (26-025), pow. kielecki</a></li>
+            <li><a href="https://www.gorno.pl/asp/pliki/2025/12/haronogram_gorno_2026.pdf" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'underline', fontWeight: 'bold' }}>Cedzyna (25-351), pow. kielecki</a></li>
+            <li><a href="https://www.gorno.pl/asp/pliki/2025/12/haronogram_gorno_2026.pdf" target="_blank" rel="noopener noreferrer" style={{ color: '#007bff', textDecoration: 'underline', fontWeight: 'bold' }}>gm. Górno (26-008), pow. kielecki</a></li>
         </ul>
 
         <h4>🚀 Dlaczego warto?</h4>
