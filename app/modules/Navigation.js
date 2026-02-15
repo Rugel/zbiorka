@@ -151,9 +151,9 @@ export default function Navigation() {
       display: 'flex',
       flexDirection: 'column',
       gap: '0.5rem',
-      transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
+      transform: isOpen ? 'translateX(0)' : 'translateX(100vw)',
       transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s',
-      zIndex: 1000,
+      zIndex: 1001,
       visibility: isOpen ? 'visible' : 'hidden',
       pointerEvents: isOpen ? 'auto' : 'none',
     },
@@ -177,50 +177,52 @@ export default function Navigation() {
   };
 
   return (
-    <nav style={navStyles.nav}>
-      <div style={navStyles.container}>
-        <div style={navStyles.logoContainer}>
-          <Link href="/" title="TrashAlert Home">
-            <Image
-              src='/logo.png'
-              alt='TrashAlert Logo'
-              width={180}
-              height={90}
-              style={{ objectFit: 'contain', mixBlendMode: 'multiply' }}
-              priority
-            />
-          </Link>
-        </div>
-
-        {/* Desktop Menu */}
-        <div className="desktop-nav" style={navStyles.desktopMenu}>
-          {menuItems.map((item) => (
-            <Link
-              key={item.id}
-              href={item.href}
-              style={{
-                ...navStyles.menuItem,
-                ...(activeItemId === item.id ? navStyles.activeMenuItem : {})
-              }}
-              className="nav-link"
-            >
-              {item.label}
+    <>
+      <nav style={navStyles.nav}>
+        <div style={navStyles.container}>
+          <div style={navStyles.logoContainer}>
+            <Link href="/" title="TrashAlert Home">
+              <Image
+                src='/logo.png'
+                alt='TrashAlert Logo'
+                width={180}
+                height={90}
+                style={{ objectFit: 'contain', mixBlendMode: 'multiply' }}
+                priority
+              />
             </Link>
-          ))}
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="desktop-nav" style={navStyles.desktopMenu}>
+            {menuItems.map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
+                style={{
+                  ...navStyles.menuItem,
+                  ...(activeItemId === item.id ? navStyles.activeMenuItem : {})
+                }}
+                className="nav-link"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile menu toggle */}
+          <button
+            className="mobile-toggle"
+            onClick={() => setIsOpen(!isOpen)}
+            style={navStyles.mobileToggle}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+          >
+            {isOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
         </div>
+      </nav>
 
-        {/* Mobile menu toggle */}
-        <button
-          className="mobile-toggle"
-          onClick={() => setIsOpen(!isOpen)}
-          style={navStyles.mobileToggle}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-        >
-          {isOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
-      </div>
-
-      {/* Mobile Menu Overlay & Drawer */}
+      {/* Mobile Menu Overlay & Drawer (Moved outside nav to avoid clipping) */}
       <div
         style={navStyles.mobileOverlay}
         onClick={() => setIsOpen(false)}
@@ -255,6 +257,6 @@ export default function Navigation() {
           .mobile-toggle { display: flex !important; }
         }
       `}</style>
-    </nav>
+    </>
   );
 }
