@@ -1,4 +1,10 @@
 import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Anulowanie subskrypcji",
+  robots: { index: false, follow: true }
+};
 
 export default async function ConfirmUnsubscriptionPage({
   searchParams,
@@ -14,31 +20,31 @@ export default async function ConfirmUnsubscriptionPage({
   }
 
   return (
-      <div
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '60vh',
+        background: '#fff',
+        borderRadius: '12px',
+        boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
+        padding: '2rem',
+        maxWidth: '400px',
+        margin: '1rem auto',
+      }}
+    >
+      <h1
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: '60vh',
-          background: '#fff',
-          borderRadius: '12px',
-          boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
-          padding: '2rem',
-          maxWidth: '400px',
-          margin: '1rem auto',
+          color: status === 'success' ? '#16a34a' : '#dc2626',
+          marginBottom: '1rem',
+          fontSize: '2rem'
         }}
       >
-        <h1
-          style={{
-        color: status === 'success' ? '#16a34a' : '#dc2626',
-        marginBottom: '1rem',
-        fontSize: '2rem'
-          }}
-        >
-          {status === 'success' ? 'Anulowanie subskrypcji' : 'Błąd'}
-        </h1>
-        <p style={{ color: '#222', fontSize: '1.1rem', textAlign: 'center' }}>{message}</p>
-      </div>
+        {status === 'success' ? 'Anulowanie subskrypcji' : 'Błąd'}
+      </h1>
+      <p style={{ color: '#222', fontSize: '1.1rem', textAlign: 'center' }}>{message}</p>
+    </div>
   );
 }

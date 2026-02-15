@@ -3,10 +3,10 @@ import UnsubscribeForm from "../modules/UnsubscribeForm";
 import Breadcrumbs from "../modules/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Anulowanie subskrypcji - TrashAlert",
+  title: "Anulowanie subskrypcji",
   description: "Zrezygnuj z powiadomień e-mail o odbiorze odpadów. Możesz to zrobić w dowolnym momencie.",
   alternates: {
-    canonical: "https://zbiorka.vercel.app/unsubscribe",
+    canonical: "/unsubscribe",
   },
 };
 

@@ -1,4 +1,10 @@
 import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Potwierdzenie subskrypcji",
+  robots: { index: false, follow: true }
+};
 
 export default async function ConfirmSubscriptionPage({
   searchParams,
@@ -14,42 +20,42 @@ export default async function ConfirmSubscriptionPage({
   }
 
   return (
-      <div
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '60vh',
+        background: '#fff',
+        borderRadius: 12,
+        boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
+        padding: 32,
+        maxWidth: 400,
+        margin: '1rem auto',
+      }}
+    >
+      <h1
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: '60vh',
-          background: '#fff',
-          borderRadius: 12,
-          boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
-          padding: 32,
-          maxWidth: 400,
-          margin: '1rem auto',
+          color: status === 'success' ? '#2e7d32' : '#c62828',
+          marginBottom: 16,
+          fontSize: 28,
+          fontWeight: 700,
+          textAlign: 'center',
         }}
       >
-        <h1
-          style={{
-        color: status === 'success' ? '#2e7d32' : '#c62828',
-        marginBottom: 16,
-        fontSize: 28,
-        fontWeight: 700,
-        textAlign: 'center',
-          }}
-        >
-          {status === 'success' ? 'Potwierdzenie subskrypcji' : 'Błąd'}
-        </h1>
-        <p
-          style={{
-        color: '#333',
-        fontSize: 18,
-        textAlign: 'center',
-        margin: 0,
-          }}
-        >
-          <p style={{ color: '#222', fontSize: '1.1rem', textAlign: 'center' }}>{message}</p>
-        </p>
-      </div>
+        {status === 'success' ? 'Potwierdzenie subskrypcji' : 'Błąd'}
+      </h1>
+      <p
+        style={{
+          color: '#333',
+          fontSize: 18,
+          textAlign: 'center',
+          margin: 0,
+        }}
+      >
+        <p style={{ color: '#222', fontSize: '1.1rem', textAlign: 'center' }}>{message}</p>
+      </p>
+    </div>
   );
 }

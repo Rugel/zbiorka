@@ -3,10 +3,10 @@ import ScheduleForm from "../modules/ScheduleForm";
 import Breadcrumbs from "../modules/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Dodaj harmonogram - TrashAlert",
-  description: "Pomóż nam rozwijać bazę harmonogramów. Dodaj terminy odbioru odpadów dla swojej lokalizacji.",
+  title: "Dodaj harmonogram",
+  description: "Pomóż nam rozwijać bazę harmonogramów wywozu śmieci. Dodaj terminy odbioru odpadów komunalnych dla swojej miejscowości w gminie Łagów, Górno lub Cedzyna.",
   alternates: {
-    canonical: "https://zbiorka.vercel.app/schedule",
+    canonical: "/schedule",
   },
 };
 

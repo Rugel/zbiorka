@@ -6,6 +6,7 @@
   --primary-light: #4ea500;
   --primary-dark: #2d6400;
   --secondary: #2563eb;
+  --secondary-dark: #1e40af;
   --accent: #f59e0b;
 
   /* Neutral Colors */
@@ -138,7 +139,17 @@ li {
 }
 
 strong {
-  color: var(--primary-dark);
+  color: var(--secondary-dark);
+}
+
+a {
+  color: var(--secondary-dark);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--secondary);
 }
 
 /* Buttons */
@@ -236,7 +247,7 @@ nav {
 }
 
 .footer a {
-  color: var(--primary);
+  color: var(--secondary-dark);
   text-decoration: none;
   font-weight: 500;
 }

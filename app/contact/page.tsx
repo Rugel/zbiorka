@@ -3,10 +3,10 @@ import ContactForm from "../modules/ContactForm";
 import Breadcrumbs from "../modules/Breadcrumbs";
 
 export const metadata: Metadata = {
-    title: "Kontakt - TrashAlert",
-    description: "Skontaktuj się z zespołem TrashAlert. Masz pytania, sugestie lub potrzebujesz pomocy? Jesteśmy do Twojej dyspozycji.",
+    title: "Kontakt",
+    description: "Skontaktuj się z zespołem TrashAlert. Masz pytania dotyczące harmonogramu wywozu śmieci w gminie Łagów, Górno lub Cedzyna? Jesteśmy do Twojej dyspozycji.",
     alternates: {
-        canonical: "https://zbiorka.vercel.app/contact",
+        canonical: "/contact",
     },
 };
 

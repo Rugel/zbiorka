@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import Breadcrumbs from "../modules/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Polityka plików cookies - Zbiorka",
-  description: "Informacje o wykorzystaniu plików cookies w serwisie Zbiorka. Dowiedz się, jak dbamy o Twoją prywatność.",
+  title: "Polityka prywatności i cookies",
+  description: "Dowiedz się, jak TrashAlert wykorzystuje pliki cookies i dba o Twoją prywatność oraz bezpieczeństwo danych.",
   alternates: {
-    canonical: "https://zbiorka.vercel.app/cookies",
+    canonical: "/cookies",
   },
 };
 
