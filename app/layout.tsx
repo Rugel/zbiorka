@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Header from './modules/Heder';
+import Header from './modules/Header';
 import Navigation from './modules/Navigation';
 import Footer from './modules/Footer';
 import CookieConsent from './modules/CookieConsent';
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | TrashAlert"
   },
   description: "Ustaw darmowe powiadomienia e-mail o terminie wywozu odpadów komunalnych dla swojej miejscowości lub ulicy. Harmonogram zbiórki odpadów komunalnych dla Łagów, Górno, Cedzyna.",
-  keywords: ["odpady komunalne", "śmieci", "harmonogram", "powiadomienie e-mail", "Łagów", " TrashAlert"],
+  keywords: ["odpady komunalne", "śmieci", "harmonogram", "powiadomienie e-mail", "Łagów", "TrashAlert"],
   authors: [{ name: "Zespół TrashAlert" }],
   creator: "TrashAlert",
   publisher: "TrashAlert",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://zbiorka.vercel.app/",
   },
   openGraph: {
     type: "website",

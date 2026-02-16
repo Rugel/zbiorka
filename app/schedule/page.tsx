@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Dodaj harmonogram",
   description: "Pomóż nam rozwijać bazę harmonogramów wywozu śmieci. Dodaj terminy odbioru odpadów komunalnych dla swojej miejscowości w gminie Łagów, Górno lub Cedzyna.",
   alternates: {
-    canonical: "/schedule",
+    canonical: "https://zbiorka.vercel.app/schedule",
   },
 };
 

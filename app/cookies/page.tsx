@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Polityka prywatności i cookies",
   description: "Dowiedz się, jak TrashAlert wykorzystuje pliki cookies i dba o Twoją prywatność oraz bezpieczeństwo danych.",
   alternates: {
-    canonical: "/cookies",
+    canonical: "https://zbiorka.vercel.app/cookies",
   },
 };
 

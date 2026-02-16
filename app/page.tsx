@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "https://zbiorka.vercel.app/",
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://zbiorka.vercel.app/",
   },
 };
 

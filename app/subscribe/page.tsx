@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Subskrypcja",
   description: "Zapisz się na darmowe powiadomienia o wywozie śmieci. Nie przegap terminów odbioru odpadów komunalnych.",
   alternates: {
-    canonical: "/subscribe",
+    canonical: "https://zbiorka.vercel.app/subscribe",
   },
 };
 

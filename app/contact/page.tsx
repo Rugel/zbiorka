@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     title: "Kontakt",
     description: "Skontaktuj się z zespołem TrashAlert. Masz pytania dotyczące harmonogramu wywozu śmieci w gminie Łagów, Górno lub Cedzyna? Jesteśmy do Twojej dyspozycji.",
     alternates: {
-        canonical: "/contact",
+        canonical: "https://zbiorka.vercel.app/contact",
     },
 };
 

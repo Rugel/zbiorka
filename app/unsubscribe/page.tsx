@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Anulowanie subskrypcji",
   description: "Zrezygnuj z powiadomień e-mail o odbiorze odpadów. Możesz to zrobić w dowolnym momencie.",
   alternates: {
-    canonical: "/unsubscribe",
+    canonical: "https://zbiorka.vercel.app/unsubscribe",
   },
 };
 
